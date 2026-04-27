@@ -36,7 +36,7 @@ def convert_statement(path: Path, account: str = "Sbi") -> list[CashewRow]:
     rows = load_statement_rows(path)
     transactions: list[StatementTransaction] = []
     for row in rows:
-        if _is_ignorable_row(row):
+        if _is_ignorable_row(row) or not _has_parseable_date(row):
             continue
         transactions.append(row_to_transaction(row))
     return [transaction_to_cashew(transaction, account=account) for transaction in transactions]
@@ -82,7 +82,26 @@ def _is_ignorable_row(row: dict[str, str]) -> bool:
     combined = " ".join(value for value in row.values() if value).strip().lower()
     if not combined:
         return True
-    return "statement summary" in combined
+    ignored_markers = [
+        "statement summary",
+        "brought forward",
+        "count total",
+        "total debits",
+        "total credits",
+        "closing balance",
+    ]
+    return any(marker in combined for marker in ignored_markers)
+
+
+def _has_parseable_date(row: dict[str, str]) -> bool:
+    date_value = _pick_value(row, HEADER_SYNONYMS["date"])
+    if not date_value:
+        return False
+    try:
+        _parse_date(date_value)
+    except ValueError:
+        return False
+    return True
 
 
 def transaction_to_cashew(transaction: StatementTransaction, account: str) -> CashewRow:
