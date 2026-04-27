@@ -34,7 +34,11 @@ DATE_FORMATS = [
 
 def convert_statement(path: Path, account: str = "Sbi") -> list[CashewRow]:
     rows = load_statement_rows(path)
-    transactions = [row_to_transaction(row) for row in rows]
+    transactions: list[StatementTransaction] = []
+    for row in rows:
+        if _is_ignorable_row(row):
+            continue
+        transactions.append(row_to_transaction(row))
     return [transaction_to_cashew(transaction, account=account) for transaction in transactions]
 
 
@@ -72,6 +76,13 @@ def row_to_transaction(row: dict[str, str]) -> StatementTransaction:
     amount = _parse_amount_from_row(debit_value, credit_value, amount_value, type_value)
     income = amount > 0
     return StatementTransaction(date=date, description=note, amount=amount, income=income)
+
+
+def _is_ignorable_row(row: dict[str, str]) -> bool:
+    combined = " ".join(value for value in row.values() if value).strip().lower()
+    if not combined:
+        return True
+    return "statement summary" in combined
 
 
 def transaction_to_cashew(transaction: StatementTransaction, account: str) -> CashewRow:
