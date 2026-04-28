@@ -6,8 +6,9 @@ from decimal import Decimal, InvalidOperation
 from io import StringIO
 from pathlib import Path
 import re
+import csv
 
-from .models import CashewRow, StatementTransaction
+from .models import CASHEW_COLUMNS, CashewRow, StatementTransaction
 from .rules import classify, extract_note
 from .xlsx import load_xlsx_table
 
@@ -123,6 +124,15 @@ def transaction_to_cashew(transaction: StatementTransaction, account: str) -> Ca
         budget=style.budget,
         objective="",
     )
+
+
+def rows_to_csv_text(rows: list[CashewRow]) -> str:
+    buffer = StringIO()
+    writer = csv.DictWriter(buffer, fieldnames=CASHEW_COLUMNS)
+    writer.writeheader()
+    for row in rows:
+        writer.writerow(row.to_csv_row())
+    return buffer.getvalue()
 
 
 def _pick_value(row: dict[str, str], aliases: set[str]) -> str:

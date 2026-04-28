@@ -12,6 +12,7 @@ dependencies = []
 
 [project.scripts]
 cashew-converter = "cashew_converter.cli:main"
+cashew-converter-web = "cashew_converter.web:main"
 
 [tool.setuptools]
 package-dir = {"" = "."}
