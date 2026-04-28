@@ -7,9 +7,11 @@ from tempfile import NamedTemporaryFile
 from urllib.parse import parse_qs
 from wsgiref.simple_server import make_server
 import csv
+import json
 import re
 
 from .models import CASHEW_COLUMNS, CashewRow
+from .rules import learn_from_rows
 from .statement import convert_statement, rows_to_csv_text
 
 
@@ -136,6 +138,13 @@ def display_cell_value(value: object) -> str:
   text = "" if value is None else str(value)
   return "" if text.lower() in {"none", "null"} else text
 
+
+def display_date_value(value: object) -> str:
+  text = display_cell_value(value)
+  if len(text) >= 10:
+    return text[:10]
+  return text
+
 PREVIEW_FORM = """<!doctype html>
 <html lang="en">
 <head>
@@ -172,24 +181,149 @@ PREVIEW_FORM = """<!doctype html>
     .cell-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(15,118,110,0.1); }
     .cell-control.select-control { cursor: pointer; }
     .cell-control.input-control { min-width: 180px; }
+    .selector-col { width: 44px; min-width: 44px; text-align: center; }
+    .row-select, #select-all { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+    .bulk-panel { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; padding: 12px; border: 1px solid #d8d3c7; border-radius: 10px; background: #fffef9; }
+    .bulk-panel label { font-size: 0.88rem; color: #6b7280; margin-right: 2px; }
+    .bulk-panel .bulk-control { min-width: 160px; }
+    .bulk-panel .bulk-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .bulk-panel button { padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; }
+    .bulk-panel button.ghost { background: #e5e7eb; color: #111827; }
     .success-banner { background: #ecfdf5; border-left: 4px solid var(--success); padding: 16px; border-radius: 6px; margin-bottom: 20px; color: #065f46; font-size: 0.95rem; display: none; }
   </style>
   <script>
+    const DATA_COLUMNS = {data_columns};
+    const CATEGORY_CHOICES = {category_choices};
+    const SUBCATEGORY_CHOICES = {subcategory_choices};
+
     function collectTableData() {
       const rows = [];
       const table = document.querySelector('table');
-      const headers = Array.from(table.querySelectorAll('th')).map(th => th.textContent);
       const bodyRows = table.querySelectorAll('tbody tr');
       bodyRows.forEach(tr => {
-        const cells = tr.querySelectorAll('td');
         const row = {};
-        headers.forEach((header, i) => {
-          const field = cells[i]?.querySelector('input, select');
-          row[header] = field ? field.value : (cells[i]?.textContent || '');
+        DATA_COLUMNS.forEach((header) => {
+          const safeName = CSS.escape(header);
+          const field = tr.querySelector('[name="' + safeName + '"]');
+          if (!field) {
+            row[header] = '';
+          } else if (field.type === 'date' && field.value) {
+            row[header] = field.value + ' 00:00:00.000';
+          } else {
+            row[header] = field.value;
+          }
         });
         rows.push(row);
       });
       return rows;
+    }
+
+    function getSelectedRows() {
+      return Array.from(document.querySelectorAll('tbody tr')).filter(row => {
+        const cb = row.querySelector('.row-select');
+        return cb && cb.checked;
+      });
+    }
+
+    function updateBulkValueControl() {
+      const field = document.getElementById('bulk-field').value;
+      const input = document.getElementById('bulk-value-input');
+      const select = document.getElementById('bulk-value-select');
+      let options = null;
+
+      if (field === 'category name') {
+        options = CATEGORY_CHOICES;
+      } else if (field === 'subcategory name') {
+        options = [''].concat(SUBCATEGORY_CHOICES);
+      } else if (field === 'income') {
+        options = ['true', 'false'];
+      }
+
+      if (options) {
+        input.style.display = 'none';
+        select.style.display = 'inline-block';
+        select.innerHTML = options.map(value => '<option value="' + String(value).replace(/"/g, '&quot;') + '">' + (value || ' ') + '</option>').join('');
+      } else {
+        select.style.display = 'none';
+        input.style.display = 'inline-block';
+      }
+    }
+
+    function getBulkValue() {
+      const input = document.getElementById('bulk-value-input');
+      const select = document.getElementById('bulk-value-select');
+      if (select.style.display !== 'none') {
+        return select.value;
+      }
+      return input.value;
+    }
+
+    function applyBulkEdit(applyToAll) {
+      const field = document.getElementById('bulk-field').value;
+      const value = getBulkValue();
+      const rows = applyToAll ? Array.from(document.querySelectorAll('tbody tr')) : getSelectedRows();
+
+      if (!rows.length) {
+        showBanner('Select at least one row first.', true);
+        return;
+      }
+
+      rows.forEach(row => {
+        const safeName = CSS.escape(field);
+        const control = row.querySelector('[name="' + safeName + '"]');
+        if (!control) return;
+
+        if (control.tagName === 'SELECT') {
+          const exists = Array.from(control.options).some(o => o.value === value);
+          if (!exists) {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value || ' ';
+            control.appendChild(option);
+          }
+        }
+        control.value = value;
+      });
+
+      showBanner('Bulk edit applied to ' + rows.length + ' row(s).', false);
+    }
+
+    function selectAllRows(checked) {
+      document.querySelectorAll('.row-select').forEach(cb => {
+        cb.checked = checked;
+      });
+      const master = document.getElementById('select-all');
+      if (master) master.checked = checked;
+    }
+
+    function showBanner(message, isError) {
+      const banner = document.querySelector('.success-banner');
+      banner.textContent = message;
+      banner.style.display = 'block';
+      banner.style.background = isError ? '#fef2f2' : '#ecfdf5';
+      banner.style.color = isError ? '#991b1b' : '#065f46';
+      banner.style.borderLeftColor = isError ? '#f87171' : '#10b981';
+      setTimeout(() => {
+        banner.style.display = 'none';
+      }, 3000);
+    }
+
+    async function learnCategoryRules() {
+      const rows = collectTableData();
+      try {
+        const response = await fetch('/learn', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ rows }),
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to learn rules.');
+        }
+        showBanner(data.message || 'Learned category rules.', false);
+      } catch (error) {
+        showBanner(String(error.message || error), true);
+      }
     }
     
     function downloadEdited() {
@@ -206,13 +340,19 @@ PREVIEW_FORM = """<!doctype html>
       link.download = 'cashew-export.csv';
       link.click();
       URL.revokeObjectURL(url);
-      
-      // Show success banner
-      const banner = document.querySelector('.success-banner');
-      banner.style.display = 'block';
-      setTimeout(() => banner.style.display = 'none', 3000);
+
+      showBanner('CSV downloaded successfully.', false);
     }
-    
+
+    window.addEventListener('load', () => {
+      updateBulkValueControl();
+      const master = document.getElementById('select-all');
+      if (master) {
+        master.addEventListener('change', (event) => {
+          selectAllRows(event.target.checked);
+        });
+      }
+    });
   </script>
 </head>
 <body>
@@ -230,10 +370,34 @@ PREVIEW_FORM = """<!doctype html>
     
     <div class="controls">
       <button onclick="downloadEdited()">⬇ Download CSV</button>
+      <button onclick="learnCategoryRules()" type="button">🧠 Learn Category Rules</button>
       <div class="divider"></div>
       <form action="/" method="get" style="margin:0; display:inline;">
         <button type="submit" class="secondary">+ Convert Another</button>
       </form>
+    </div>
+
+    <div class="bulk-panel">
+      <label for="bulk-field">Bulk edit field</label>
+      <select id="bulk-field" class="cell-control select-control bulk-control" onchange="updateBulkValueControl()">
+        <option value="category name">category name</option>
+        <option value="subcategory name">subcategory name</option>
+        <option value="income">income</option>
+        <option value="budget">budget</option>
+        <option value="type">type</option>
+        <option value="note">note</option>
+      </select>
+
+      <label for="bulk-value-input">Value</label>
+      <input id="bulk-value-input" class="cell-control input-control bulk-control" type="text" placeholder="Enter value">
+      <select id="bulk-value-select" class="cell-control select-control bulk-control" style="display:none;"></select>
+
+      <div class="bulk-actions">
+        <button type="button" onclick="applyBulkEdit(false)">Apply To Selected</button>
+        <button type="button" onclick="applyBulkEdit(true)">Apply To All</button>
+        <button type="button" class="ghost" onclick="selectAllRows(true)">Select All</button>
+        <button type="button" class="ghost" onclick="selectAllRows(false)">Clear Selection</button>
+      </div>
     </div>
     
     <div class="table-wrapper">
@@ -252,12 +416,15 @@ PREVIEW_FORM = """<!doctype html>
 def application(environ, start_response):
     method = environ.get("REQUEST_METHOD", "GET").upper()
     path = environ.get("PATH_INFO", "/")
-    
-    if method == "GET":
+
+    if method == "GET" and path == "/":
         start_response("200 OK", [("Content-Type", "text/html; charset=utf-8")])
         return [render_upload_page()]
 
-    if method != "POST":
+    if method == "POST" and path == "/learn":
+        return learn_edited_rules(environ, start_response)
+
+    if method != "POST" or path != "/":
         start_response("405 Method Not Allowed", [("Content-Type", "text/plain; charset=utf-8")])
         return [b"Method not allowed"]
 
@@ -281,71 +448,111 @@ def render_upload_page(message: str = "", error: bool = False) -> bytes:
     return form.encode("utf-8")
 
 
-def render_preview_page(rows: list[CashewRow]) -> bytes:
-    """Render an editable preview table of the converted transactions."""
-    headers = " ".join(f"<th>{escape(col)}</th>" for col in CASHEW_COLUMNS)
-    subcategory_choices = sorted(
-        {
-            *SUBCATEGORY_CHOICES,
-            *{
-                str(row.to_csv_row().get("subcategory name", "")).strip()
-                for row in rows
-                if str(row.to_csv_row().get("subcategory name", "")).strip()
-            },
-        }
-    )
+def learn_edited_rules(environ, start_response):
+    content_length = int(environ.get("CONTENT_LENGTH", 0) or 0)
+    body = environ["wsgi.input"].read(content_length) if content_length else b""
+    try:
+        payload = json.loads(body.decode("utf-8") or "{}")
+    except json.JSONDecodeError:
+        start_response("400 Bad Request", [("Content-Type", "application/json; charset=utf-8")])
+        return [json.dumps({"error": "Invalid JSON payload."}).encode("utf-8")]
 
-    table_rows_html = ""
-    for row in rows:
-        csv_row = row.to_csv_row()
-        cell_html: list[str] = []
-        for col in CASHEW_COLUMNS:
-            value = display_cell_value(csv_row.get(col, ""))
-            if col == "category name":
-                cell_html.append(
-                    '<td class="category-cell">'
-                    f'<select class="cell-control select-control" name="{escape(col)}">'
-                    f"{render_category_options(value)}"
-                    "</select>"
-                    "</td>"
-                )
-            elif col == "subcategory name":
-                cell_html.append(
-                    '<td class="subcategory-cell">'
-                    f'<select class="cell-control select-control" name="{escape(col)}">'
-                    f'{render_select_options(subcategory_choices, value)}'
-                    "</select>"
-                    "</td>"
-                )
-            elif col == "note":
-                cell_html.append(
-                    '<td class="note-cell">'
-                    f'<input class="cell-control input-control" type="text" name="{escape(col)}" value="{escape(value)}">'
-                    "</td>"
-                )
-            elif col == "income":
-                cell_html.append(
-                    "<td>"
-                    f'<select class="cell-control select-control" name="{escape(col)}">'
-                    f'{render_select_options(["true", "false"], value.lower())}'
-                    "</select>"
-                    "</td>"
-                )
-            else:
-                input_type = "number" if col == "amount" else "text"
-                extra_attrs = ' step="any"' if col == "amount" else ""
-                cell_html.append(
-                    "<td>"
-                    f'<input class="cell-control input-control" type="{input_type}" name="{escape(col)}" value="{escape(value)}"{extra_attrs}>'
-                    "</td>"
-                )
-        cells = " ".join(cell_html)
-        table_rows_html += f"<tr>{cells}</tr>\n"
-    
-    preview = PREVIEW_FORM.replace("{row_count}", str(len(rows)))
-    preview = preview.replace("{table_headers}", headers)
-    preview = preview.replace("{table_rows}", table_rows_html)
-    return preview.encode("utf-8")
+    rows = payload.get("rows") if isinstance(payload, dict) else None
+    if not isinstance(rows, list):
+        start_response("400 Bad Request", [("Content-Type", "application/json; charset=utf-8")])
+        return [json.dumps({"error": "Expected 'rows' as an array."}).encode("utf-8")]
+
+    learned_count = learn_from_rows(rows)
+    start_response("200 OK", [("Content-Type", "application/json; charset=utf-8")])
+    return [
+        json.dumps(
+            {
+                "learned": learned_count,
+                "message": f"Learned {learned_count} rule(s). Future conversions will use these mappings.",
+            }
+        ).encode("utf-8")
+    ]
+
+
+def render_preview_page(rows: list[CashewRow]) -> bytes:
+  """Render an editable preview table of the converted transactions."""
+  headers = '<th class="selector-col"><input id="select-all" type="checkbox" title="Select all rows"></th> '
+  headers += " ".join(f"<th>{escape(col)}</th>" for col in CASHEW_COLUMNS)
+  subcategory_choices = sorted(
+    {
+      *SUBCATEGORY_CHOICES,
+      *{
+        str(row.to_csv_row().get("subcategory name", "")).strip()
+        for row in rows
+        if str(row.to_csv_row().get("subcategory name", "")).strip()
+      },
+    }
+  )
+
+  table_rows_html = ""
+  for row in rows:
+    csv_row = row.to_csv_row()
+    cell_html: list[str] = [
+      '<td class="selector-col"><input class="row-select" type="checkbox" title="Select row"></td>'
+    ]
+
+    for col in CASHEW_COLUMNS:
+      value = display_cell_value(csv_row.get(col, ""))
+      if col == "category name":
+        cell_html.append(
+          '<td class="category-cell">'
+          f'<select class="cell-control select-control" name="{escape(col)}" data-col="{escape(col)}">'
+          f"{render_category_options(value)}"
+          "</select>"
+          "</td>"
+        )
+      elif col == "subcategory name":
+        cell_html.append(
+          '<td class="subcategory-cell">'
+          f'<select class="cell-control select-control" name="{escape(col)}" data-col="{escape(col)}">'
+          f"{render_select_options(subcategory_choices, value)}"
+          "</select>"
+          "</td>"
+        )
+      elif col == "note":
+        cell_html.append(
+          '<td class="note-cell">'
+          f'<input class="cell-control input-control" type="text" name="{escape(col)}" data-col="{escape(col)}" value="{escape(value)}">'
+          "</td>"
+        )
+      elif col == "date":
+        cell_html.append(
+          "<td>"
+          f'<input class="cell-control input-control" type="date" name="{escape(col)}" data-col="{escape(col)}" value="{escape(display_date_value(csv_row.get(col, "")))}">'
+          "</td>"
+        )
+      elif col == "income":
+        cell_html.append(
+          "<td>"
+          f'<select class="cell-control select-control" name="{escape(col)}" data-col="{escape(col)}">'
+          f'{render_select_options(["true", "false"], value.lower())}'
+          "</select>"
+          "</td>"
+        )
+      else:
+        input_type = "number" if col == "amount" else "text"
+        extra_attrs = ' step="any"' if col == "amount" else ""
+        cell_html.append(
+          "<td>"
+          f'<input class="cell-control input-control" type="{input_type}" name="{escape(col)}" data-col="{escape(col)}" value="{escape(value)}"{extra_attrs}>'
+          "</td>"
+        )
+
+    cells = " ".join(cell_html)
+    table_rows_html += f"<tr>{cells}</tr>\n"
+
+  preview = PREVIEW_FORM.replace("{row_count}", str(len(rows)))
+  preview = preview.replace("{table_headers}", headers)
+  preview = preview.replace("{table_rows}", table_rows_html)
+  preview = preview.replace("{data_columns}", json.dumps(CASHEW_COLUMNS))
+  preview = preview.replace("{category_choices}", json.dumps(CATEGORY_CHOICES))
+  preview = preview.replace("{subcategory_choices}", json.dumps(subcategory_choices))
+  return preview.encode("utf-8")
 
 
 def render_page(message: str = "", error: bool = False) -> bytes:

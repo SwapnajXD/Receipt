@@ -4,19 +4,25 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import csv
 from io import BytesIO
+import json
 import unittest
 from wsgiref.util import setup_testing_defaults
 
 from cashew_converter.models import CASHEW_COLUMNS
+from cashew_converter.rules import LEARNED_RULES_PATH
 from cashew_converter.statement import convert_statement, load_statement_rows, row_to_transaction
 from cashew_converter.web import application, convert_uploaded_statement, render_page
 
 
 ROOT = Path(__file__).resolve().parents[1]
-WORKBOOK = ROOT / "bstate.xlsx"
+WORKBOOK = ROOT / "res" / "bstate.xlsx"
 
 
 class ConverterTests(unittest.TestCase):
+    def tearDown(self) -> None:
+        if LEARNED_RULES_PATH.exists():
+            LEARNED_RULES_PATH.unlink()
+
     def test_xlsx_reader_extracts_rows(self) -> None:
         rows = load_statement_rows(WORKBOOK)
         self.assertGreater(len(rows), 0)
@@ -105,8 +111,45 @@ class ConverterTests(unittest.TestCase):
         self.assertIn(b"<th>amount</th>", response_body)
         self.assertIn(b'<select class="cell-control select-control"', response_body)
         self.assertIn(b'name="subcategory name"', response_body)
+        self.assertIn(b'type="date"', response_body)
         self.assertIn(b'<input class="cell-control input-control"', response_body)
         self.assertIn(b"Download CSV", response_body)
+
+    def test_web_learn_endpoint_accepts_rows(self) -> None:
+        payload = {
+            "rows": [
+                {
+                    "note": "DMART AV",
+                    "category name": "Groceries",
+                    "subcategory name": "",
+                    "color": "0xff26a69a",
+                    "icon": "groceries.png",
+                    "budget": "Month",
+                }
+            ]
+        }
+
+        body = json.dumps(payload).encode("utf-8")
+        environ = {}
+        setup_testing_defaults(environ)
+        environ["REQUEST_METHOD"] = "POST"
+        environ["PATH_INFO"] = "/learn"
+        environ["CONTENT_TYPE"] = "application/json"
+        environ["CONTENT_LENGTH"] = str(len(body))
+        environ["wsgi.input"] = BytesIO(body)
+
+        status: list[str] = []
+        headers: list[tuple[str, str]] = []
+
+        def start_response(value, response_headers):
+            status.append(value)
+            headers.extend(response_headers)
+
+        response_body = b"".join(application(environ, start_response))
+        self.assertEqual(status[0], "200 OK")
+        self.assertEqual(dict(headers)["Content-Type"], "application/json; charset=utf-8")
+        self.assertIn(b'"learned": 1', response_body)
+        self.assertTrue(LEARNED_RULES_PATH.exists())
 
 
 if __name__ == "__main__":

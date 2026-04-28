@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 import re
+from pathlib import Path
 
 from .models import CategoryStyle, StatementTransaction
 
@@ -38,10 +40,93 @@ RULES: list[tuple[re.Pattern[str], CategoryStyle]] = [
     (re.compile(r"\bJERSEY\b|\bCLOTH\b|\bSHIRT\b|\bT-?SHIRT\b|\bPANTS?\b|\bJEANS?\b", re.IGNORECASE), _style("Shopping", "Clothing", "0xffe91e63", "shopping.png")),
 ]
 
+LEARNED_RULES_PATH = Path(__file__).resolve().parent / "learned_rules.json"
+_LEARNED_RULES_CACHE: dict[str, dict[str, str]] | None = None
+
+
+def _normalize_learning_key(text: str) -> str:
+    normalized = re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
+    return re.sub(r"\s+", " ", normalized)
+
+
+def _style_from_payload(payload: dict[str, str]) -> CategoryStyle:
+    return CategoryStyle(
+        category=payload.get("category", FALLBACK_STYLE.category),
+        subcategory=payload.get("subcategory", ""),
+        color=payload.get("color", FALLBACK_STYLE.color),
+        icon=payload.get("icon", FALLBACK_STYLE.icon),
+        budget=payload.get("budget", FALLBACK_STYLE.budget),
+    )
+
+
+def _load_learned_rules() -> dict[str, dict[str, str]]:
+    global _LEARNED_RULES_CACHE
+    if _LEARNED_RULES_CACHE is not None:
+        return _LEARNED_RULES_CACHE
+
+    if not LEARNED_RULES_PATH.exists():
+        _LEARNED_RULES_CACHE = {}
+        return _LEARNED_RULES_CACHE
+
+    try:
+        data = json.loads(LEARNED_RULES_PATH.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        data = {}
+
+    _LEARNED_RULES_CACHE = data if isinstance(data, dict) else {}
+    return _LEARNED_RULES_CACHE
+
+
+def _save_learned_rules(rules_map: dict[str, dict[str, str]]) -> None:
+    global _LEARNED_RULES_CACHE
+    LEARNED_RULES_PATH.write_text(json.dumps(rules_map, indent=2, sort_keys=True), encoding="utf-8")
+    _LEARNED_RULES_CACHE = rules_map
+
+
+def learn_from_rows(rows: list[dict[str, str]]) -> int:
+    """Persist learned merchant/category mappings from edited preview rows."""
+    learned = _load_learned_rules().copy()
+    updates = 0
+
+    for row in rows:
+        note = str(row.get("note", "")).strip()
+        category = str(row.get("category name", "")).strip()
+        if not note or not category:
+            continue
+
+        key = _normalize_learning_key(note)
+        if not key:
+            continue
+
+        learned[key] = {
+            "category": category,
+            "subcategory": str(row.get("subcategory name", "")).strip(),
+            "color": str(row.get("color", FALLBACK_STYLE.color)).strip() or FALLBACK_STYLE.color,
+            "icon": str(row.get("icon", FALLBACK_STYLE.icon)).strip() or FALLBACK_STYLE.icon,
+            "budget": str(row.get("budget", FALLBACK_STYLE.budget)).strip(),
+        }
+        updates += 1
+
+    if updates:
+        _save_learned_rules(learned)
+
+    return updates
+
 
 def classify(transaction: StatementTransaction) -> CategoryStyle:
     if transaction.income:
         return INCOME_STYLE
+
+    learned_rules = _load_learned_rules()
+    if learned_rules:
+        learned_key = _normalize_learning_key(extract_note(transaction.description))
+        if learned_key in learned_rules:
+            return _style_from_payload(learned_rules[learned_key])
+
+        searchable_key = _normalize_learning_key(transaction.description)
+        for key, payload in learned_rules.items():
+            if key and key in searchable_key:
+                return _style_from_payload(payload)
 
     searchable_text = f"{transaction.description}".upper()
     for pattern, style in RULES:
