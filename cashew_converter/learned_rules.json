@@ -13,6 +13,13 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "7 eleven": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "7eleven": {
     "budget": "Month",
     "category": "Groceries",
@@ -20,11 +27,95 @@
     "icon": "groceries.png",
     "subcategory": "Snacks"
   },
+  "a one va": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "aashray": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "aashrayk": {
     "budget": "Month",
     "category": "Income",
     "color": "0xff66bb6a",
     "icon": "coin.png",
+    "subcategory": ""
+  },
+  "aasif raza": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "abaso sa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "abdul ja": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "abhay ra": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "abu kaif": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "abu shop": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "adesh ho": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "aditya r": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "aditya v": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "agrawal": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "airtel": {
@@ -34,12 +125,110 @@
     "icon": "bills.png",
     "subcategory": "Recharge"
   },
+  "airtel r": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "Recharge"
+  },
+  "ajay ank": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ajay gan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "akash sh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "akshay i": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "aliya mu": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "aman khan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "amar vij": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "amit dad": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "amit dny": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "amogh ma": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
   "anand": {
     "budget": "",
     "category": "Shopping",
     "color": "0xffe91e63",
     "icon": "shopping.png",
     "subcategory": "Clothing"
+  },
+  "anand ka": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "anant ch": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "anarul": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "aniket": {
     "budget": "Month",
@@ -48,7 +237,49 @@
     "icon": "gift.png",
     "subcategory": ""
   },
+  "aniketgi": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "anil arv": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ankit ku": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "anud pra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "anvay": {
+    "budget": "Month",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "anvay go": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "anvaydes": {
     "budget": "Month",
     "category": "Income",
     "color": "0xff66bb6a",
@@ -62,6 +293,20 @@
     "icon": "groceries.png",
     "subcategory": "Fruits"
   },
+  "aram mil": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "arbaj ah": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "ariel": {
     "budget": "",
     "category": "Personal Care",
@@ -69,11 +314,95 @@
     "icon": "user.png",
     "subcategory": "Toiletries"
   },
-  "aryan": {
+  "arpita dey": {
     "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "aryan": {
+    "budget": "",
     "category": "Income",
     "color": "0xff66bb6a",
     "icon": "coin.png",
+    "subcategory": ""
+  },
+  "aryan me": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "asadul": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ashiana": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ashok ku": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ashok ra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "aslam s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "astha sa": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "atharv d": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "atharva": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "atish ra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "atm": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "atm card": {
@@ -83,12 +412,117 @@
     "icon": "bills.png",
     "subcategory": ""
   },
+  "audumber": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "auto": {
     "budget": "Month",
     "category": "Travel",
     "color": "0xff005190",
     "icon": "plane.png",
     "subcategory": "Cabs"
+  },
+  "avenue": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "avenue f": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "avenue s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "avhad um": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "aws india": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "ayush as": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ayush k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ayush ra": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "ayush sa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "b jawaha": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "baban ka": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "bagdadi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "balram": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "balu bap": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "banana": {
     "budget": "Month",
@@ -97,12 +531,33 @@
     "icon": "groceries.png",
     "subcategory": "Fruits"
   },
+  "banglore": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "banglore bakery": {
     "budget": "",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "Cafes"
+  },
+  "beneeco": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "bhagu": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "bhaji pav": {
     "budget": "Month",
@@ -118,6 +573,27 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "bharat c": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "bharati": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "bhavya r": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
   "bhej": {
     "budget": "Month",
     "category": "Groceries",
@@ -132,11 +608,25 @@
     "icon": "groceries.png",
     "subcategory": "Snacks"
   },
+  "bhupesh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "bhurji": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "bhutan h": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "bikaner": {
@@ -181,6 +671,13 @@
     "icon": "shopping.png",
     "subcategory": "Other"
   },
+  "blue dar": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "blueberry": {
     "budget": "Month",
     "category": "Groceries",
@@ -210,6 +707,13 @@
     "subcategory": "College"
   },
   "burger": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "burger k": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
@@ -293,6 +797,55 @@
     "icon": "gift.png",
     "subcategory": ""
   },
+  "cash deposit self": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "cemtex dep upi drc 038 764503348 21122024 16567": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "cemtex dep upi drc 517 369340117 22062025 18783": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "cemtex dep upi drc 536 523359721 31122025 18833": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "cemtex dep upi drc 536 550559160 31122025 14161": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "cemtex dep upi reversal": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "center p": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "chai": {
     "budget": "Month",
     "category": "Dining",
@@ -314,6 +867,13 @@
     "icon": "shopping.png",
     "subcategory": "Other"
   },
+  "chandan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "change": {
     "budget": "Month",
     "category": "Personal Care",
@@ -328,6 +888,13 @@
     "icon": "shopping.png",
     "subcategory": "Other"
   },
+  "charuta": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
   "chat": {
     "budget": "Month",
     "category": "Dining",
@@ -335,12 +902,33 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "chelladu": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "chem": {
     "budget": "Month",
     "category": "Bills & Fees",
     "color": "0xff4caf50",
     "icon": "bills.png",
     "subcategory": "College"
+  },
+  "chetak s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "chhiddiq": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "chicken": {
     "budget": "Month",
@@ -398,6 +986,34 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "choudhar": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "cidco": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "city and": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "coco bp": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "cofee": {
     "budget": "Month",
     "category": "Dining",
@@ -433,12 +1049,33 @@
     "icon": "user.png",
     "subcategory": "Toiletries"
   },
+  "communic": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "computer": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
   "cotton": {
     "budget": "Month",
     "category": "Personal Care",
     "color": "0xffbdbdbd",
     "icon": "user.png",
     "subcategory": "Toiletries"
+  },
+  "crazy ch": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "credit interest": {
     "budget": "Month",
@@ -461,12 +1098,54 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "d k auto": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Cabs"
+  },
   "dabeli": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "FastFood"
+  },
+  "dabhekar": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "daily ne": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "daksh m": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "damayant": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "darshan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "data": {
     "budget": "Month",
@@ -475,6 +1154,62 @@
     "icon": "bills.png",
     "subcategory": "Recharge"
   },
+  "daulat r": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "dayanidh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "dbt a0326007b341a credit through pf ms 21cl3sj": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "dbt a04260006d930 credit through pf ms 21cl3sj": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "debit atmcard amc 459156 3106": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "deepak b": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "deepak s": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "delhivery": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "delivery": {
     "budget": "Month",
     "category": "Shopping",
@@ -482,12 +1217,47 @@
     "icon": "shopping.png",
     "subcategory": "Other"
   },
+  "desh raj": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "deshrajpal": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "detergent": {
     "budget": "Month",
     "category": "Personal Care",
     "color": "0xffbdbdbd",
     "icon": "user.png",
     "subcategory": "Toiletries"
+  },
+  "devanara": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "devanshi": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "dilmaya": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "dinner": {
     "budget": "Month",
@@ -502,6 +1272,13 @@
     "color": "0xffe91e63",
     "icon": "shopping.png",
     "subcategory": "Clothing"
+  },
+  "divyesh": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
   },
   "dmart": {
     "budget": "Month",
@@ -538,6 +1315,13 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "drogheri": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "eatclub": {
     "budget": "Month",
     "category": "Dining",
@@ -559,6 +1343,13 @@
     "icon": "groceries.png",
     "subcategory": ""
   },
+  "ekart": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "facewash shampoo": {
     "budget": "Month",
     "category": "Personal Care",
@@ -566,11 +1357,25 @@
     "icon": "user.png",
     "subcategory": "Toiletries"
   },
+  "famous f": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "farewell": {
     "budget": "Month",
     "category": "Gifts",
     "color": "0xfff44336",
     "icon": "gift.png",
+    "subcategory": ""
+  },
+  "farhankhan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "farsan": {
@@ -594,12 +1399,26 @@
     "icon": "user.png",
     "subcategory": "Toiletries"
   },
+  "firdosh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "flashdeive": {
     "budget": "Month",
     "category": "Shopping",
     "color": "0xffe91e63",
     "icon": "shopping.png",
     "subcategory": "Other"
+  },
+  "flipkart": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "foodway": {
     "budget": "Month",
@@ -636,6 +1455,41 @@
     "icon": "cutlery.png",
     "subcategory": "Cafes"
   },
+  "frullato": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "gajaram": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "gajraj s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ganesh t": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ganeshmu": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "ganne ka juice": {
     "budget": "Month",
     "category": "Dining",
@@ -648,6 +1502,20 @@
     "category": "Gifts",
     "color": "0xfff44336",
     "icon": "gift.png",
+    "subcategory": ""
+  },
+  "gayatri": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "gayatria": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "gemini": {
@@ -664,6 +1532,20 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "giri ani": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "gokul sw": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "goli": {
     "budget": "Month",
     "category": "Personal Care",
@@ -671,11 +1553,81 @@
     "icon": "user.png",
     "subcategory": "Doctor"
   },
+  "google i": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "google p": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "google pay": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "govindku": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "groww in": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "guddu": {
     "budget": "Month",
     "category": "Gifts",
     "color": "0xfff44336",
     "icon": "gift.png",
+    "subcategory": ""
+  },
+  "gupt ram": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "gupta pa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "gurukrup": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "haier in": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "haldirams": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "handwash": {
@@ -692,11 +1644,60 @@
     "icon": "shopping.png",
     "subcategory": "Clothing"
   },
+  "harish s": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "harsh ad": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "harsh ra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "harshraj": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "hayat a": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "hdd cover": {
     "budget": "Month",
     "category": "Personal Care",
     "color": "0xffbdbdbd",
     "icon": "user.png",
+    "subcategory": ""
+  },
+  "health c": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "hkalwar2": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "hostel": {
@@ -705,6 +1706,34 @@
     "color": "0xff4caf50",
     "icon": "bills.png",
     "subcategory": "College"
+  },
+  "hot stuff": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "hotel as": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "hotel ka": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "hrushike": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "icecream": {
     "budget": "",
@@ -720,12 +1749,47 @@
     "icon": "cutlery.png",
     "subcategory": "Cafes"
   },
+  "imps 611715243540 icn xx582 groww in imps": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "imtiyaz": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "indian r": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "inhaler": {
     "budget": "Month",
     "category": "Personal Care",
     "color": "0xffbdbdbd",
     "icon": "user.png",
     "subcategory": "Doctor"
+  },
+  "intekhabul": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "interes t credit": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
   },
   "interest": {
     "budget": "",
@@ -741,12 +1805,138 @@
     "icon": "coin.png",
     "subcategory": ""
   },
+  "irctc nrm": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "irctc ra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "irctc uts": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "irctctou": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "j j ente": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "j t b s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "jagadish": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "jagannat": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "jagdish": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "jagruti": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "jagtar s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "janata e": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "janata s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "jatin ra": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "jay ramd": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "jayesh s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "jeewan k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "jersey": {
     "budget": "Month",
     "category": "Shopping",
     "color": "0xffe91e63",
     "icon": "shopping.png",
     "subcategory": "Clothing"
+  },
+  "jiomart": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
   },
   "juice": {
     "budget": "Month",
@@ -755,12 +1945,40 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "junaid k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "jyoti ut": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "kachori": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "FastFood"
+  },
+  "kailash": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "kamlesh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "kancha": {
     "budget": "Month",
@@ -769,12 +1987,75 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "kanha ca": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "karan": {
     "budget": "",
     "category": "Personal Care",
     "color": "0xffbdbdbd",
     "icon": "user.png",
     "subcategory": "Toiletries"
+  },
+  "karan ki": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "karan ra": {
+    "budget": "",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "karan vi": {
+    "budget": "",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "kartik s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "kartiksu": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "karuna m": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "kashinat": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "keval ba": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "keychain": {
     "budget": "",
@@ -797,12 +2078,68 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "kgn chin": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "khana": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "Cafes"
+  },
+  "khanke r": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "khatik d": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "kiran na": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "kirticoll": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "komalara": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "koustubh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "krishna": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "kt": {
     "budget": "Month",
@@ -832,6 +2169,20 @@
     "icon": "groceries.png",
     "subcategory": ""
   },
+  "kundan k": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "lalit ch": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "laptop": {
     "budget": "Month",
     "category": "Shopping",
@@ -846,12 +2197,40 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "laxman v": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "laxmi ch": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "laxmi co": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "lead pencil": {
     "budget": "Month",
     "category": "Bills & Fees",
     "color": "0xff4caf50",
     "icon": "bills.png",
     "subcategory": "College"
+  },
+  "liquor w": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "local": {
     "budget": "",
@@ -874,12 +2253,47 @@
     "icon": "cutlery.png",
     "subcategory": "Cafes"
   },
+  "m r asso": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "m s dr j": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "m s new": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "maa durg": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "maaza": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "Delivery"
+  },
+  "madan ku": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "maggi": {
     "budget": "Month",
@@ -888,11 +2302,39 @@
     "icon": "groceries.png",
     "subcategory": "Snacks"
   },
+  "magicpin": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "magii": {
     "budget": "Month",
     "category": "Groceries",
     "color": "0xff26a69a",
     "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "mahesh r": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mahesha": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "maithri": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "manas": {
@@ -902,11 +2344,39 @@
     "icon": "gift.png",
     "subcategory": ""
   },
+  "manas as": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "manasvi": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
   "mango juice": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "mani vis": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "manish": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "manja": {
@@ -915,6 +2385,41 @@
     "color": "0xffe91e63",
     "icon": "shopping.png",
     "subcategory": "Other"
+  },
+  "manoj gu": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "manoj ku": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "manoj wi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "manolaxm": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "manthan": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
   },
   "manual": {
     "budget": "Month",
@@ -930,12 +2435,110 @@
     "icon": "user.png",
     "subcategory": "Doctor"
   },
+  "masroof": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "master k": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "master s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "master v": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "matru ti": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "maya dev": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mayank b": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "mayur k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mayur pr": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "mc donalds": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mcdonalds": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "md shahbaz": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "medicine": {
     "budget": "Month",
     "category": "Personal Care",
     "color": "0xffbdbdbd",
     "icon": "user.png",
     "subcategory": "Toiletries"
+  },
+  "mehmood": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mes cant": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "mess": {
     "budget": "Month",
@@ -958,12 +2561,89 @@
     "icon": "cutlery.png",
     "subcategory": "Cafes"
   },
+  "mintoo e": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "miss gri": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "miss lav": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "miss rid": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mithiles": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "mobile": {
     "budget": "",
     "category": "Shopping",
     "color": "0xffe91e63",
     "icon": "shopping.png",
     "subcategory": "Other"
+  },
+  "mohammad": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mohammed": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mohd asraf": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mohd aya": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mohd tau": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mohmmad": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "momos": {
     "budget": "Month",
@@ -979,12 +2659,306 @@
     "icon": "popcorn.png",
     "subcategory": "Movies"
   },
+  "mr ajay": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr anil": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr bedre": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "mr diy": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr gopic": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr harid": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr mithi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr mohan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr mohd": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr musht": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr nanur": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr nitin": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr parve": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr prana": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "mr prash": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr raj": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr rames": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr ramja": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr ravi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr siddh": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "mr spars": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "mr sudar": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "mr vidha": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "mr vino": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mr vivek": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "mrs aasm": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mrs divi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mrs mira": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mrs rekh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mrs son": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mrsrekha": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "ms guruk": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "ms sumay": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "msrtc": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mufid khan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mulayam": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "mulchandra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "muzammil": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "nagendra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "nails": {
     "budget": "",
     "category": "Personal Care",
     "color": "0xffbdbdbd",
     "icon": "user.png",
     "subcategory": "Toiletries"
+  },
+  "naitik c": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "narayan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "naresh p": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "nashta": {
     "budget": "Month",
@@ -993,12 +2967,54 @@
     "icon": "cutlery.png",
     "subcategory": "Cafes"
   },
+  "nat arvi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "neelukum": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "neetu pa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "new city": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "new kanc": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "ngp cst": {
     "budget": "Month",
     "category": "Travel",
     "color": "0xff005190",
     "icon": "plane.png",
     "subcategory": "Trains"
+  },
+  "nigar fa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "nimbooz": {
     "budget": "Month",
@@ -1014,6 +3030,41 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "niranjan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "nirmal r": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "nisarga": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "nitant h": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "nitin na": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "nuggets": {
     "budget": "Month",
     "category": "Dining",
@@ -1026,6 +3077,34 @@
     "category": "Groceries",
     "color": "0xff26a69a",
     "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "om sai p": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "om yadav": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "omkar su": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "orange c": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "order": {
@@ -1056,6 +3135,13 @@
     "icon": "bills.png",
     "subcategory": "College"
   },
+  "pan junc": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "paneer": {
     "budget": "Month",
     "category": "Dining",
@@ -1083,6 +3169,13 @@
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "FastFood"
+  },
+  "pankaj k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "pant": {
     "budget": "Month",
@@ -1112,6 +3205,13 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "paridhi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "parking": {
     "budget": "Month",
     "category": "Travel",
@@ -1119,12 +3219,47 @@
     "icon": "plane.png",
     "subcategory": "Cabs"
   },
+  "parmendra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "parth as": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "parvati": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "pastry": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "Cafes"
+  },
+  "pavan roat": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "pawan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "pen": {
     "budget": "Month",
@@ -1161,12 +3296,33 @@
     "icon": "plane.png",
     "subcategory": ""
   },
+  "pfm a032500c45cfa credit through pf ms 21cl3sj": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "pfm a12240022de6c credit through pf ms 21cl3sj": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
   "pharmacy": {
     "budget": "Month",
     "category": "Personal Care",
     "color": "0xffbdbdbd",
     "icon": "user.png",
     "subcategory": "Toiletries"
+  },
+  "piyush v": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "pizza": {
     "budget": "Month",
@@ -1175,12 +3331,96 @@
     "icon": "cutlery.png",
     "subcategory": "Delivery"
   },
+  "pmpml": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "prabhaka": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "pralhad": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "pramod k": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
   "pranay": {
     "budget": "Month",
     "category": "Travel",
     "color": "0xff005190",
     "icon": "plane.png",
     "subcategory": "Cabs"
+  },
+  "pranaysa": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Cabs"
+  },
+  "pratik p": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "pravej p": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "pravin m": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "pravin r": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "premchan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "priya pa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "priyani": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
   },
   "project": {
     "budget": "Month",
@@ -1203,11 +3443,186 @@
     "icon": "cutlery.png",
     "subcategory": ""
   },
+  "radheshk": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "raghu n": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "raghusub": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "raj jagd": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "raj kumar": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "raj stat": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rajab ali": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rajbahor": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rajesh k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rajesh s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rajeshwa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rajkumar": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rajpurohit": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rakesh c": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rakeshla": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "rakhi": {
     "budget": "Month",
     "category": "Groceries",
     "color": "0xff26a69a",
     "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "ramanand": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "ramchand": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ramees a": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ramesh c": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ramesh k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ramnayan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ramsaran": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ramsons": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ramveer": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "ramvilas": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "ranveer": {
@@ -1224,12 +3639,26 @@
     "icon": "plane.png",
     "subcategory": "Cabs"
   },
+  "rashika": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
   "rasmalai": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "Delivery"
+  },
+  "ravendar": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "recharge": {
     "budget": "Month",
@@ -1238,11 +3667,39 @@
     "icon": "bills.png",
     "subcategory": "Recharge"
   },
+  "rehan ca": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rekha": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "reward": {
     "budget": "",
     "category": "Income",
     "color": "0xff66bb6a",
     "icon": "coin.png",
+    "subcategory": ""
+  },
+  "rinju m": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "ritika": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "rod hanger": {
@@ -1252,12 +3709,47 @@
     "icon": "bills.png",
     "subcategory": "College"
   },
+  "rohit ke": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rohit pe": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rohit sa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "roll": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "FastFood"
+  },
+  "roshanmo": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "rushikes": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
   },
   "rustom": {
     "budget": "Month",
@@ -1266,8 +3758,64 @@
     "icon": "cutlery.png",
     "subcategory": "Cafes"
   },
+  "sachin a": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sachin s": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sagar de": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sahil di": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sahjad h": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sai fast": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "saidatta": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "sambhav": {
     "budget": "Month",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "sambhavroy": {
+    "budget": "",
     "category": "Income",
     "color": "0xff66bb6a",
     "icon": "coin.png",
@@ -1301,12 +3849,82 @@
     "icon": "shopping.png",
     "subcategory": "Other"
   },
+  "sandeep": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sandip k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sandipra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "sandwich": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "FastFood"
+  },
+  "sanjay d": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sanjay y": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sankalp": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sanket s": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "sanket v": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "santosh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "santoshk": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "sardi": {
     "budget": "Month",
@@ -1315,12 +3933,89 @@
     "icon": "user.png",
     "subcategory": "Doctor"
   },
+  "sarika k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sarita r": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sashank": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "satyam f": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "saurabh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sbipmopa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sbiya24197120503266969849 transfer to fa 004": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sbiyb24197114005875328222 pai 00357253 29806 of": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "scoops n": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "sev puri": {
     "budget": "",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "FastFood"
+  },
+  "shafeek": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shahida": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "shake": {
     "budget": "Month",
@@ -1336,6 +4031,13 @@
     "icon": "user.png",
     "subcategory": "Toiletries"
   },
+  "shankar": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "shawarma": {
     "budget": "Month",
     "category": "Dining",
@@ -1349,6 +4051,48 @@
     "color": "0xff4caf50",
     "icon": "bills.png",
     "subcategory": "College"
+  },
+  "shetkari": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shilpa m": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shiv bah": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shiv sha": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shivshak": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shiyakant": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "shoes": {
     "budget": "Month",
@@ -1364,12 +4108,117 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "shon dip": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "shraddha": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shree fo": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shree me": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shree sa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shreenat": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shri gan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shyam vi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "shyamman": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "siddhakala": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "siddhant": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "siddik sk": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "signal d": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "singh en": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "slice": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "FastFood"
+  },
+  "smart ba": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "smart bazar": {
     "budget": "Month",
@@ -1406,11 +4255,67 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "soham ch": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sonu sit": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sourabh": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sourvi j": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "spotify": {
     "budget": "Month",
-    "category": "Work",
+    "category": "Income",
     "color": "0xff795548",
     "icon": "briefcase.png",
+    "subcategory": ""
+  },
+  "subham": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "subham k": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "sudhir c": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sudhir s": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
     "subcategory": ""
   },
   "sugarcane juice": {
@@ -1427,6 +4332,62 @@
     "icon": "shopping.png",
     "subcategory": "Other"
   },
+  "sujal sa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sujit ra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "sulaksha": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "sunil ku": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "suresh k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "swara pr": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "swarahan": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "swarali": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "sweet": {
     "budget": "Month",
     "category": "Dining",
@@ -1441,12 +4402,40 @@
     "icon": "cutlery.png",
     "subcategory": ""
   },
+  "swiggy": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "swiggy l": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "t shirt": {
     "budget": "Month",
     "category": "Shopping",
     "color": "0xffe91e63",
     "icon": "shopping.png",
     "subcategory": "Clothing"
+  },
+  "taj": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "tamore g": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
   },
   "taxi": {
     "budget": "Month",
@@ -1460,6 +4449,13 @@
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "thapa mo": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "toothpaste": {
@@ -1483,6 +4479,41 @@
     "icon": "shopping.png",
     "subcategory": "Clothing"
   },
+  "trishul": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "tuhina k": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "tushar d": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "two kitc": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "umesh sa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "underwear": {
     "budget": "",
     "category": "Shopping",
@@ -1490,12 +4521,131 @@
     "icon": "shopping.png",
     "subcategory": "Clothing"
   },
+  "universi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "upi rev 055999001993 0097694162092": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 101703259016 0097692162094": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 162546485664 0097693162093": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 355573793360 0097694162092": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 369146724951 0097692162094": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 405596393150 0097692162094": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 494497553543 0097694162092": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 528788573982 0097692162094": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 528788579673 0097692162094": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 567668061824 0097694162092": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 595003932477 0097692162094": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 712456597687 0097693162093": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 817838761158 0097692162094": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upi rev 893443071788 0097694162092": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "upilit e 0095809162097 at 00346 chandrapur": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "uru": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
     "icon": "cutlery.png",
     "subcategory": "FastFood"
+  },
+  "urvaien": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
   },
   "utkarsh": {
     "budget": "Month",
@@ -1526,10 +4676,31 @@
     "subcategory": "FastFood"
   },
   "vaibhav": {
-    "budget": "Month",
+    "budget": "",
     "category": "Income",
     "color": "0xff66bb6a",
     "icon": "coin.png",
+    "subcategory": ""
+  },
+  "vaishali": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "vaja ram": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "vasa ram": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
     "subcategory": ""
   },
   "vaseline": {
@@ -1546,6 +4717,34 @@
     "icon": "gift.png",
     "subcategory": ""
   },
+  "vedant a": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "vedant d": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "vedant s": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "veer med": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "vicks": {
     "budget": "Month",
     "category": "Personal Care",
@@ -1558,6 +4757,69 @@
     "category": "Gifts",
     "color": "0xfff44336",
     "icon": "gift.png",
+    "subcategory": ""
+  },
+  "vidya sa": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "vijay ya": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "vijaya g": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "vinod vi": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "vipan ku": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "vipul ra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "virendra": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "vishnu t": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "wasekar": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
     "subcategory": ""
   },
   "washing do": {
@@ -1581,6 +4843,27 @@
     "icon": "cutlery.png",
     "subcategory": "FastFood"
   },
+  "wdl tfr": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "welcome": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "www dail": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "xerox": {
     "budget": "Month",
     "category": "Bills & Fees",
@@ -1595,7 +4878,49 @@
     "icon": "bills.png",
     "subcategory": "College"
   },
+  "yash din": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "yugandha": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "zaheen a": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "zaid anw": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
+  "zam zam": {
+    "budget": "Month",
+    "category": "Transfers",
+    "color": "0xff607d8b",
+    "icon": "transfer.png",
+    "subcategory": ""
+  },
   "zepto": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "zepto ma": {
     "budget": "Month",
     "category": "Dining",
     "color": "0xff78909c",
@@ -1623,7 +4948,28 @@
     "icon": "user.png",
     "subcategory": "Doctor"
   },
+  "zomato": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "zomato l": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
   "zudio": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "zudio in": {
     "budget": "Month",
     "category": "Shopping",
     "color": "0xffe91e63",

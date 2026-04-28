@@ -333,7 +333,7 @@ PREVIEW_FORM = """<!doctype html>
       data.forEach(row => {
         csv.push(headers.map(h => '"' + String(row[h] || '').replace(/"/g, '""') + '"').join(','));
       });
-      const blob = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const blob = new Blob([csv.join('\\n')], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
