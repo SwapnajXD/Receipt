@@ -99,7 +99,7 @@ class ConverterTests(unittest.TestCase):
         response_body = b"".join(application(environ, start_response))
         self.assertEqual(status[0], "200 OK")
         self.assertEqual(dict(headers)["Content-Type"], "text/html; charset=utf-8")
-        self.assertIn(b"Preview & Edit", response_body)
+        self.assertIn(b"Conversion Complete", response_body)
         self.assertIn(b"139 transactions", response_body)
         self.assertIn(b"<th>account</th>", response_body)
         self.assertIn(b"<th>amount</th>", response_body)

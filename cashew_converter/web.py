@@ -25,44 +25,87 @@ UPLOAD_FORM = """<!doctype html>
     * { box-sizing: border-box; }
     body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: linear-gradient(180deg, #f8f4eb 0%, #efe7da 100%); color: var(--ink); }
     main { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
-    .card { width: min(720px, 100%); background: rgba(255,255,255,0.8); backdrop-filter: blur(8px); border: 1px solid rgba(216,211,199,0.9); border-radius: 24px; padding: 28px; box-shadow: 0 24px 80px rgba(31,41,55,0.10); }
-    h1 { margin: 0 0 8px; font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.02; letter-spacing: -0.04em; }
-    p { margin: 0 0 18px; color: var(--muted); line-height: 1.6; }
-    form { display: grid; gap: 14px; margin-top: 22px; }
-    label { display: grid; gap: 6px; font-weight: 600; }
-    input[type="text"], input[type="file"] { width: 100%; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--border); background: #fff; font: inherit; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-    button { appearance: none; border: 0; border-radius: 999px; padding: 12px 18px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; font: inherit; font-weight: 700; cursor: pointer; }
-    .hint { font-size: 0.95rem; color: var(--muted); }
-    .error { margin-top: 18px; padding: 14px 16px; border-radius: 16px; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
-    .success { margin-top: 18px; padding: 14px 16px; border-radius: 16px; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
-    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; }
+    .card { width: min(720px, 100%); background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(216,211,199,0.9); border-radius: 20px; padding: 32px; box-shadow: 0 24px 80px rgba(31,41,55,0.12); }
+    h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.02; letter-spacing: -0.04em; font-weight: 700; }
+    p { margin: 0 0 24px; color: var(--muted); line-height: 1.6; font-size: 1.05rem; }
+    form { display: grid; gap: 18px; margin-top: 26px; }
+    label { display: grid; gap: 8px; font-weight: 600; color: var(--ink); font-size: 1rem; }
+    input[type="text"], input[type="file"] { width: 100%; padding: 13px 15px; border-radius: 10px; border: 2px solid var(--border); background: #fff; font: inherit; transition: border-color 0.2s; }
+    input[type="text"]:focus, input[type="file"]:focus { outline: none; border-color: var(--accent); }
+    .form-hint { font-size: 0.88rem; color: var(--muted); font-weight: 400; margin-top: -4px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 28px; }
+    button { appearance: none; border: 0; border-radius: 10px; padding: 13px 22px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; font: inherit; font-weight: 700; cursor: pointer; font-size: 1rem; transition: transform 0.15s, box-shadow 0.15s; }
+    button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,118,110,0.3); }
+    button:active { transform: translateY(0); }
+    .hint-text { font-size: 0.95rem; color: var(--muted); }
+    .features { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); display: grid; gap: 12px; }
+    .feature { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; color: var(--muted); }
+    .feature-icon { color: var(--accent); font-weight: 700; font-size: 1.2rem; flex-shrink: 0; }
+    .error { margin-top: 20px; padding: 16px 18px; border-radius: 12px; background: #fef2f2; color: #991b1b; border-left: 4px solid #f87171; border-radius: 8px; }
+    .success { margin-top: 20px; padding: 16px 18px; border-radius: 12px; background: #ecfdf5; color: #065f46; border-left: 4px solid #6ee7b7; border-radius: 8px; }
+    code { background: #f3f4f6; padding: 3px 7px; border-radius: 6px; font-family: 'Courier New', monospace; }
   </style>
 </head>
 <body>
 <main>
   <section class="card">
-    <h1>Cashew Converter</h1>
-    <p>Upload a bank statement in <code>.xlsx</code> or <code>.csv</code> format and download a Cashew-ready CSV.</p>
+    <h1>💳 Cashew Converter</h1>
+    <p>Convert your bank statement to Cashew-ready CSV format. Preview and edit before downloading.</p>
+    
     <form method="post" enctype="multipart/form-data">
       <label>
         Statement file
         <input type="file" name="statement" accept=".xlsx,.csv" required>
+        <span class="form-hint">Supports .xlsx and .csv formats</span>
       </label>
+      
       <label>
         Account name
         <input type="text" name="account" value="Sbi" maxlength="64">
+        <span class="form-hint">Name to label transactions with</span>
       </label>
+      
       <div class="actions">
-        <button type="submit">Convert and preview</button>
-        <span class="hint">You can edit the data before downloading.</span>
+        <button type="submit">⚡ Convert & Preview</button>
+        <span class="hint-text">Edit before downloading</span>
       </div>
     </form>
+    
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">✎</span>
+        <span><strong>Edit inline:</strong> Click any cell to edit dates, amounts, categories, or notes</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎯</span>
+        <span><strong>Smart categories:</strong> Auto-categorize transactions; adjust with dropdown menu</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">⬇</span>
+        <span><strong>Download:</strong> Export your customized CSV in Cashew format</span>
+      </div>
+    </div>
+    
     {message_placeholder}
   </section>
 </main>
 </body>
 </html>
+"""
+
+CATEGORY_OPTIONS = """<optgroup label="Income">
+<option value="Income">Income</option>
+</optgroup>
+<optgroup label="Expense">
+<option value="Groceries">Groceries</option>
+<option value="Travel">Travel</option>
+<option value="Bills & Fees">Bills & Fees</option>
+<option value="Dining">Dining</option>
+<option value="Personal Care">Personal Care</option>
+<option value="Gifts">Gifts</option>
+<option value="Shopping">Shopping</option>
+<option value="Transfers">Transfers</option>
+</optgroup>
 """
 
 PREVIEW_FORM = """<!doctype html>
@@ -72,46 +115,106 @@ PREVIEW_FORM = """<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cashew Converter - Preview</title>
   <style>
-    :root { color-scheme: light; --accent: #0f766e; --accent-2: #115e59; }
+    :root { color-scheme: light; --accent: #0f766e; --accent-2: #115e59; --success: #10b981; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: linear-gradient(180deg, #f8f4eb 0%, #efe7da 100%); color: #1f2937; }
     main { min-height: 100vh; padding: 24px; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    h1 { margin-top: 0; font-size: 2rem; }
-    .controls { margin-bottom: 20px; display: flex; gap: 12px; flex-wrap: wrap; }
-    button { appearance: none; border: 0; border-radius: 999px; padding: 10px 16px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; font: inherit; font-weight: 600; cursor: pointer; }
+    .container { max-width: 1400px; margin: 0 auto; }
+    .header { margin-bottom: 28px; }
+    h1 { margin: 0 0 8px; font-size: 2.2rem; font-weight: 700; }
+    .subtitle { margin: 0; color: #6b7280; font-size: 1.05rem; }
+    .stats { display: flex; gap: 20px; margin-top: 14px; font-size: 0.95rem; color: #6b7280; }
+    .controls { margin-bottom: 20px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    button { appearance: none; border: 0; border-radius: 8px; padding: 11px 18px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; font: inherit; font-weight: 600; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+    button:hover { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(15,118,110,0.3); }
+    button:active { transform: translateY(0); }
     button.secondary { background: #9ca3af; }
-    .table-wrapper { background: white; border-radius: 12px; border: 1px solid #d8d3c7; overflow: auto; max-height: 600px; box-shadow: 0 4px 12px rgba(31,41,55,0.08); }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #e5e7eb; }
-    th { background: #f9fafb; font-weight: 700; position: sticky; top: 0; }
-    td { cursor: text; }
-    td:hover { background: #fef3c7; }
-    input[type="text"] { width: 100%; padding: 4px 6px; border: 1px solid #3b82f6; border-radius: 4px; font-family: inherit; }
-    .row-count { font-size: 0.9rem; color: #6b7280; margin-bottom: 12px; }
+    button.secondary:hover { box-shadow: 0 8px 16px rgba(156,163,175,0.3); }
+    .divider { width: 1px; height: 20px; background: #d8d3c7; }
+    .table-wrapper { background: white; border-radius: 12px; border: 1px solid #d8d3c7; overflow: auto; max-height: 700px; box-shadow: 0 6px 20px rgba(31,41,55,0.10); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    th { background: #f9fafb; font-weight: 700; position: sticky; top: 0; border-bottom: 2px solid #e5e7eb; padding: 14px 12px; text-align: left; }
+    td { padding: 12px; border-bottom: 1px solid #f3f4f6; }
+    tbody tr:hover { background: #fffbf0; }
+    td.date { font-size: 0.9rem; color: #6b7280; font-family: monospace; }
+    td.amount { font-family: 'Courier New', monospace; font-weight: 600; }
+    td.category-cell { min-width: 140px; }
+    select { width: 100%; padding: 6px 8px; border: 1px solid #d8d3c7; border-radius: 6px; font-family: inherit; font-size: inherit; background: white; cursor: pointer; }
+    select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(15,118,110,0.1); }
+    input.note-input { width: 100%; padding: 6px 8px; border: 1px solid #d8d3c7; border-radius: 6px; font-family: inherit; font-size: inherit; }
+    input.note-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(15,118,110,0.1); }
+    .note-display { cursor: pointer; padding: 6px 0; }
+    .note-display:hover { color: var(--accent); }
+    .success-banner { background: #ecfdf5; border-left: 4px solid var(--success); padding: 16px; border-radius: 6px; margin-bottom: 20px; color: #065f46; font-size: 0.95rem; display: none; }
   </style>
   <script>
-    function makeTableEditable() {
-      const cells = document.querySelectorAll('table td');
-      cells.forEach(cell => {
+    const CATEGORY_OPTIONS = {category_options};
+    
+    function setupCategoryDropdowns() {
+      const categoryHeader = Array.from(document.querySelectorAll('th')).find(th => th.textContent === 'Category');
+      if (!categoryHeader) return;
+      
+      const categoryColumnIndex = Array.from(categoryHeader.parentNode.children).indexOf(categoryHeader);
+      const cells = document.querySelectorAll('tbody tr td:nth-child(' + (categoryColumnIndex + 1) + ')');
+      
+      cells.forEach((cell, idx) => {
+        const currentValue = cell.textContent;
+        cell.addEventListener('click', function(e) {
+          if (e.target.tagName === 'SELECT') return;
+          const select = document.createElement('select');
+          select.innerHTML = CATEGORY_OPTIONS;
+          select.value = currentValue;
+          cell.innerHTML = '';
+          cell.appendChild(select);
+          select.focus();
+          
+          const saveCategory = () => {
+            cell.textContent = select.value;
+          };
+          
+          select.addEventListener('blur', saveCategory);
+          select.addEventListener('change', saveCategory);
+        });
+      });
+    }
+    
+    function setupNoteEdits() {
+      const noteHeader = Array.from(document.querySelectorAll('th')).find(th => th.textContent === 'Note');
+      if (!noteHeader) return;
+      
+      const noteColumnIndex = Array.from(noteHeader.parentNode.children).indexOf(noteHeader);
+      const cells = document.querySelectorAll('tbody tr td:nth-child(' + (noteColumnIndex + 1) + ')');
+      
+      cells.forEach((cell) => {
+        const value = cell.textContent;
+        cell.classList.add('note-display');
         cell.addEventListener('click', function(e) {
           if (e.target.tagName === 'INPUT') return;
-          const value = this.textContent;
-          this.innerHTML = '<input type="text" value="' + value.replace(/"/g, '&quot;') + '">';
-          const input = this.querySelector('input');
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'note-input';
+          input.value = value;
+          cell.innerHTML = '';
+          cell.appendChild(input);
           input.focus();
           input.select();
-          input.addEventListener('blur', function() {
-            cell.textContent = this.value;
-          });
+          
+          const saveNote = () => {
+            cell.textContent = input.value;
+            cell.classList.add('note-display');
+          };
+          
+          input.addEventListener('blur', saveNote);
           input.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') this.blur();
-            if (e.key === 'Escape') cell.textContent = value;
+            if (e.key === 'Escape') {
+              cell.textContent = value;
+              cell.classList.add('note-display');
+            }
           });
         });
       });
     }
-    window.addEventListener('load', makeTableEditable);
     
     function collectTableData() {
       const rows = [];
@@ -131,32 +234,52 @@ PREVIEW_FORM = """<!doctype html>
     
     function downloadEdited() {
       const data = collectTableData();
-      const csv = [Array.from(document.querySelectorAll('table th')).map(th => '"' + th.textContent.replace(/"/g, '""') + '"').join(',')];
+      const headers = Array.from(document.querySelectorAll('table th')).map(th => th.textContent);
+      const csv = [headers.map(h => '"' + h.replace(/"/g, '""') + '"').join(',')];
       data.forEach(row => {
-        csv.push(Object.values(row).map(v => '"' + String(v).replace(/"/g, '""') + '"').join(','));
+        csv.push(headers.map(h => '"' + String(row[h] || '').replace(/"/g, '""') + '"').join(','));
       });
-      const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
+      const blob = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'cashew-export.csv';
-      a.click();
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'cashew-export.csv';
+      link.click();
       URL.revokeObjectURL(url);
+      
+      // Show success banner
+      const banner = document.querySelector('.success-banner');
+      banner.style.display = 'block';
+      setTimeout(() => banner.style.display = 'none', 3000);
     }
+    
+    window.addEventListener('load', () => {
+      setupCategoryDropdowns();
+      setupNoteEdits();
+    });
   </script>
 </head>
 <body>
 <main>
   <div class="container">
-    <h1>Preview & Edit</h1>
-    <p>Review and edit your transactions below. Click any cell to edit it.</p>
-    <div class="row-count">{row_count} transactions</div>
+    <div class="header">
+      <h1>✓ Conversion Complete</h1>
+      <p class="subtitle">Review, edit, and download your transactions</p>
+      <div class="stats">
+        <span>📊 {row_count} transactions processed</span>
+      </div>
+    </div>
+    
+    <div class="success-banner">✓ CSV downloaded successfully!</div>
+    
     <div class="controls">
-      <button onclick="downloadEdited()">Download CSV</button>
+      <button onclick="downloadEdited()">⬇ Download CSV</button>
+      <div class="divider"></div>
       <form action="/" method="get" style="margin:0; display:inline;">
-        <button type="submit" class="secondary">Convert another</button>
+        <button type="submit" class="secondary">+ Convert Another</button>
       </form>
     </div>
+    
     <div class="table-wrapper">
       <table>
         <thead><tr>{table_headers}</tr></thead>
@@ -215,6 +338,7 @@ def render_preview_page(rows: list[CashewRow]) -> bytes:
     preview = PREVIEW_FORM.replace("{row_count}", str(len(rows)))
     preview = preview.replace("{table_headers}", headers)
     preview = preview.replace("{table_rows}", table_rows_html)
+    preview = preview.replace("{category_options}", json.dumps(CATEGORY_OPTIONS))
     return preview.encode("utf-8")
 
 
