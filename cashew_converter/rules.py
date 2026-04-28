@@ -51,9 +51,33 @@ def classify(transaction: StatementTransaction) -> CategoryStyle:
 
 
 def extract_note(details: str) -> str:
+    """Extract a precise, clean merchant or transaction note from bank statement details."""
+    if not details or not details.strip():
+        return ""
+    
     flattened = re.sub(r"\s+", " ", details).strip()
+    
+    # Remove DEP/WDL TFR prefix
     flattened = re.sub(r"^(DEP|WDL)\s+TFR\s+", "", flattened, flags=re.IGNORECASE)
-    matched = re.search(r"UPI/(?:CR|DR)/[^/]+/([^/]+)", flattened, flags=re.IGNORECASE)
-    if matched:
-        return re.sub(r"\s+", " ", matched.group(1)).strip()
-    return flattened
+    
+    # Try to extract from UPI transaction format: UPI/CR or UPI/DR/txnid/merchant/bank/ref/desc
+    upi_match = re.search(r"UPI/(?:CR|DR)/[^/]+/([^/]+)", flattened, flags=re.IGNORECASE)
+    if upi_match:
+        merchant = upi_match.group(1).strip()
+        # Clean up merchant name: remove extra spaces, normalize
+        merchant = re.sub(r"\s+", " ", merchant).strip()
+        # Truncate at common delimiters to get just the merchant name
+        merchant = re.split(r"[,;]", merchant)[0].strip()
+        # Remove trailing numbers/codes (like bank sort codes)
+        merchant = re.sub(r"\s+\d+\s*$", "", merchant).strip()
+        if merchant:
+            return merchant
+    
+    # Fallback: use the full flattened details capped at 50 chars
+    # Remove AT location suffixes (common in bank statements)
+    cleaned = re.sub(r"\s+AT\s+\d+.*$", "", flattened, flags=re.IGNORECASE).strip()
+    # Truncate to first meaningful phrase if very long
+    if len(cleaned) > 50:
+        cleaned = cleaned[:50].rsplit(" ", 1)[0].strip()
+    
+    return cleaned if cleaned else flattened[:50]
