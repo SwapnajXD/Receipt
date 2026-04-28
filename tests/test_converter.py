@@ -71,7 +71,7 @@ class ConverterTests(unittest.TestCase):
         self.assertEqual(status[0], "200 OK")
         self.assertIn(b"Cashew Converter", body)
 
-    def test_web_upload_conversion_returns_csv(self) -> None:
+    def test_web_upload_conversion_returns_preview(self) -> None:
         boundary = "----CashewBoundary7e3f8c"
         workbook_bytes = WORKBOOK.read_bytes()
         body = b"".join(
@@ -98,9 +98,12 @@ class ConverterTests(unittest.TestCase):
 
         response_body = b"".join(application(environ, start_response))
         self.assertEqual(status[0], "200 OK")
-        self.assertEqual(dict(headers)["Content-Type"], "text/csv; charset=utf-8")
-        self.assertTrue(response_body.startswith(b"account,amount,currency"))
-        self.assertIn("cashew-export.csv", dict(headers)["Content-Disposition"])
+        self.assertEqual(dict(headers)["Content-Type"], "text/html; charset=utf-8")
+        self.assertIn(b"Preview & Edit", response_body)
+        self.assertIn(b"139 transactions", response_body)
+        self.assertIn(b"<th>account</th>", response_body)
+        self.assertIn(b"<th>amount</th>", response_body)
+        self.assertIn(b"Download CSV", response_body)
 
 
 if __name__ == "__main__":
