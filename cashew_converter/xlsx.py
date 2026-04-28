@@ -7,23 +7,41 @@ import xml.etree.ElementTree as ET
 
 
 NAMESPACE = {"a": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+HEADER_HINTS = {
+    "date",
+    "transaction date",
+    "txn date",
+    "value date",
+    "details",
+    "description",
+    "particulars",
+    "narration",
+    "debit",
+    "credit",
+    "balance",
+    "amount",
+    "dr",
+    "cr",
+}
 
 
 def load_xlsx_table(path: Path) -> list[dict[str, str]]:
     with ZipFile(path) as archive:
         shared_strings = _load_shared_strings(archive)
-        sheet_name = _first_sheet_name(archive)
-        sheet_xml = archive.read(sheet_name)
-    rows = _parse_sheet_rows(sheet_xml, shared_strings)
-    if not rows:
+        candidate_tables: list[tuple[int, list[dict[str, str]]]] = []
+        for sheet_name in _all_sheet_names(archive):
+            sheet_xml = archive.read(sheet_name)
+            rows = _parse_sheet_rows(sheet_xml, shared_strings)
+            if not rows:
+                continue
+            score, table = _rows_to_scored_table(rows)
+            if table:
+                candidate_tables.append((score, table))
+
+    if not candidate_tables:
         return []
-    headers = rows[0]
-    table: list[dict[str, str]] = []
-    for row in rows[1:]:
-        record = {header: row[index] if index < len(row) else "" for index, header in enumerate(headers)}
-        if any(value.strip() for value in record.values()):
-            table.append(record)
-    return table
+    candidate_tables.sort(key=lambda item: item[0], reverse=True)
+    return candidate_tables[0][1]
 
 
 def _first_sheet_name(archive: ZipFile) -> str:
@@ -39,6 +57,61 @@ def _first_sheet_name(archive: ZipFile) -> str:
         raise ValueError("Workbook does not contain any sheets")
     target = relationship_map[sheet.attrib["{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"]]
     return f"xl/{target}"
+
+
+def _all_sheet_names(archive: ZipFile) -> list[str]:
+    workbook = ET.fromstring(archive.read("xl/workbook.xml"))
+    relationships = ET.fromstring(archive.read("xl/_rels/workbook.xml.rels"))
+    relationship_map = {
+        relationship.attrib["Id"]: relationship.attrib["Target"]
+        for relationship in relationships
+        if relationship.attrib.get("Type", "").endswith("/worksheet")
+    }
+    sheet_names: list[str] = []
+    for sheet in workbook.findall("a:sheets/a:sheet", NAMESPACE):
+        relation_id = sheet.attrib.get("{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id")
+        if relation_id and relation_id in relationship_map:
+            sheet_names.append(f"xl/{relationship_map[relation_id]}")
+    return sheet_names
+
+
+def _rows_to_scored_table(rows: list[list[str]]) -> tuple[int, list[dict[str, str]]]:
+    if not rows:
+        return (0, [])
+
+    header_index = _best_header_index(rows)
+    headers = rows[header_index]
+    table: list[dict[str, str]] = []
+    for row in rows[header_index + 1 :]:
+        record = {header: row[index] if index < len(row) else "" for index, header in enumerate(headers)}
+        if any(value.strip() for value in record.values()):
+            table.append(record)
+
+    header_score = _header_score(headers)
+    width_score = sum(1 for value in headers if (value or "").strip())
+    row_score = min(len(table), 500)
+    return (header_score * 1000 + width_score * 10 + row_score, table)
+
+
+def _best_header_index(rows: list[list[str]]) -> int:
+    search_limit = min(len(rows), 40)
+    best_index = 0
+    best_score = -1
+    for index in range(search_limit):
+        score = _header_score(rows[index])
+        if score > best_score:
+            best_score = score
+            best_index = index
+    return best_index
+
+
+def _header_score(headers: list[str]) -> int:
+    normalized = {_normalize_header(value) for value in headers if (value or "").strip()}
+    return sum(1 for value in normalized if value in HEADER_HINTS)
+
+
+def _normalize_header(value: str) -> str:
+    return " ".join((value or "").strip().lower().split())
 
 
 def _load_shared_strings(archive: ZipFile) -> list[str]:

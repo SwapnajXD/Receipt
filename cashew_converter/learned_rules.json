@@ -1,9 +1,1633 @@
 {
+  "1dm": {
+    "budget": "Month",
+    "category": "Entertainment",
+    "color": "0xff2196f3",
+    "icon": "popcorn.png",
+    "subcategory": ""
+  },
+  "7 11": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "7eleven": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "aashray": {
+    "budget": "Month",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "airtel": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "Recharge"
+  },
+  "anand": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "aniket": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "anvay": {
+    "budget": "Month",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "apple": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Fruits"
+  },
+  "ariel": {
+    "budget": "",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "aryan": {
+    "budget": "Month",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "atm card": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": ""
+  },
+  "auto": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Cabs"
+  },
+  "banana": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Fruits"
+  },
+  "banglore bakery": {
+    "budget": "",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "bhaji pav": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "bhajipav": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "bhej": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "bhel": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "bhurji": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "bikaner": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "birany": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "biryani": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "biscuit": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "biskut": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "blanket sheets": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "blueberry": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Fruits"
+  },
+  "book": {
+    "budget": "Month",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "book pen": {
+    "budget": "",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "books": {
+    "budget": "",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "burger": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "burger king": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "burji": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "buttermilk": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "cab": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Cabs"
+  },
+  "cable": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "cake": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "calci photos": {
+    "budget": "",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "canteen": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "canteen change": {
+    "budget": "",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "carrot": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Fruits"
+  },
+  "cash": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "chai": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "chai cofee": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "chain": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "change": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "charger": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "chat": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "chem": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "chicken": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "chilli chicken": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "chinese": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "chintu": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "chips": {
+    "budget": "",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "chocolate": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "chole": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "chole bhature": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "cofee": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "coffee": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "coke": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "cold coffee": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "comfort": {
+    "budget": "",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "cotton": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "credit interest": {
+    "budget": "Month",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "cst ngp": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Trains"
+  },
+  "cutlet": {
+    "budget": "",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "dabeli": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "data": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "Recharge"
+  },
+  "delivery": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "detergent": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "dinner": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "disha clothes": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "dmart": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
   "dmart av": {
     "budget": "Month",
     "category": "Groceries",
     "color": "0xff26a69a",
     "icon": "groceries.png",
     "subcategory": ""
+  },
+  "doaa": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "doc": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Doctor"
+  },
+  "dosa": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "eatclub": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "egg": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "eggs": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "facewash shampoo": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "farewell": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "farsan": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "fees": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "fevikwik": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "flashdeive": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "foodway": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "frankie": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "fries": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "frooti": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "fruit": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "ganne ka juice": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "ganpati": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "gemini": {
+    "budget": "Month",
+    "category": "Work",
+    "color": "0xff795548",
+    "icon": "briefcase.png",
+    "subcategory": ""
+  },
+  "gift": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "goli": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Doctor"
+  },
+  "guddu": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "handwash": {
+    "budget": "",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "hanger": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "hdd cover": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": ""
+  },
+  "hostel": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "icecream": {
+    "budget": "",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "idli": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "inhaler": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Doctor"
+  },
+  "interest": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "intrest": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "jersey": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "juice": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "kachori": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "kancha": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "karan": {
+    "budget": "",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "keychain": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "kfc": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "kfc bucket": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "khana": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "kt": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "kt pranav": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "kulfi": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "kundan": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "laptop": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "lassi": {
+    "budget": "",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "lead pencil": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "local": {
+    "budget": "",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Trains"
+  },
+  "local metro": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Trains"
+  },
+  "lunch": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "maaza": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "maggi": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "magii": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "manas": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "mango juice": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "manja": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "manual": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "mask": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Doctor"
+  },
+  "medicine": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "mess": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "metro": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Trains"
+  },
+  "milk": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "mobile": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "momos": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "movie": {
+    "budget": "Month",
+    "category": "Entertainment",
+    "color": "0xff2196f3",
+    "icon": "popcorn.png",
+    "subcategory": "Movies"
+  },
+  "nails": {
+    "budget": "",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "nashta": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "ngp cst": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Trains"
+  },
+  "nimbooz": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "nimbu pani": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "nuggets": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "om": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "order": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "oreo milkshake": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "ors": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Doctor"
+  },
+  "pages": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "paneer": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "pani": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "pani puri": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "panipuri": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "pant": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "pants": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "paperboat": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "paratha": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "parking": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Cabs"
+  },
+  "pastry": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "pen": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "pens": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "pepsi": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "petrol": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": ""
+  },
+  "petroleum": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": ""
+  },
+  "pharmacy": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "pizza": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "pranay": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Cabs"
+  },
+  "project": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "protein bar": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "punjabi": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "rakhi": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "ranveer": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "rapido": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Cabs"
+  },
+  "rasmalai": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "recharge": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "Recharge"
+  },
+  "reward": {
+    "budget": "",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "rod hanger": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "roll": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "rustom": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "sambhav": {
+    "budget": "Month",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "samosa": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "samosa pac": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "samosa pav": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": "Snacks"
+  },
+  "sandal": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "sandwich": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "sardi": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Doctor"
+  },
+  "sev puri": {
+    "budget": "",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "shake": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "shampoo": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "shawarma": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "sheets": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "shoes": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "shon": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "slice": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "smart bazar": {
+    "budget": "Month",
+    "category": "Groceries",
+    "color": "0xff26a69a",
+    "icon": "groceries.png",
+    "subcategory": ""
+  },
+  "smoodh": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "soap": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "socks": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "soda": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "spotify": {
+    "budget": "Month",
+    "category": "Work",
+    "color": "0xff795548",
+    "icon": "briefcase.png",
+    "subcategory": ""
+  },
+  "sugarcane juice": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "suitcase": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Other"
+  },
+  "sweet": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "sweets": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "t shirt": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "taxi": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Cabs"
+  },
+  "thali": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": ""
+  },
+  "toothpaste": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "train": {
+    "budget": "Month",
+    "category": "Travel",
+    "color": "0xff005190",
+    "icon": "plane.png",
+    "subcategory": "Trains"
+  },
+  "trends": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "underwear": {
+    "budget": "",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
+  },
+  "uru": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "utkarsh": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "vada": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Cafes"
+  },
+  "vada pav": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "vadapav": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "vaibhav": {
+    "budget": "Month",
+    "category": "Income",
+    "color": "0xff66bb6a",
+    "icon": "coin.png",
+    "subcategory": ""
+  },
+  "vaseline": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "vedant": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "vicks": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Doctor"
+  },
+  "vidhan": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "washing do": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "washing machine": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Toiletries"
+  },
+  "water": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "FastFood"
+  },
+  "xerox": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "xerox file": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "zepto": {
+    "budget": "Month",
+    "category": "Dining",
+    "color": "0xff78909c",
+    "icon": "cutlery.png",
+    "subcategory": "Delivery"
+  },
+  "zerodha": {
+    "budget": "Month",
+    "category": "Gifts",
+    "color": "0xfff44336",
+    "icon": "gift.png",
+    "subcategory": ""
+  },
+  "zerox": {
+    "budget": "Month",
+    "category": "Bills & Fees",
+    "color": "0xff4caf50",
+    "icon": "bills.png",
+    "subcategory": "College"
+  },
+  "zhandu balm": {
+    "budget": "Month",
+    "category": "Personal Care",
+    "color": "0xffbdbdbd",
+    "icon": "user.png",
+    "subcategory": "Doctor"
+  },
+  "zudio": {
+    "budget": "Month",
+    "category": "Shopping",
+    "color": "0xffe91e63",
+    "icon": "shopping.png",
+    "subcategory": "Clothing"
   }
 }
