@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-from cgi import FieldStorage
 from html import escape
 from io import BytesIO
 from pathlib import Path
 from tempfile import NamedTemporaryFile
+from urllib.parse import parse_qs
 from wsgiref.simple_server import make_server
 import csv
-from typing import Iterable
+import re
 
 from .models import CASHEW_COLUMNS
 from .statement import convert_statement, rows_to_csv_text
@@ -57,7 +57,7 @@ UPLOAD_FORM = """<!doctype html>
         <span class="hint">The result uses the same mapping rules as the CLI.</span>
       </div>
     </form>
-    {message}
+    {message_placeholder}
   </section>
 </main>
 </body>
@@ -93,32 +93,106 @@ def application(environ, start_response):
 
 def render_page(message: str = "", error: bool = False) -> bytes:
     if not message:
-        return UPLOAD_FORM.format(message="").encode("utf-8")
-    css_class = "error" if error else "success"
-    return UPLOAD_FORM.format(message=f'<div class="{css_class}">{escape(message)}</div>').encode("utf-8")
+        message_html = ""
+    else:
+        css_class = "error" if error else "success"
+        message_html = f'<div class="{css_class}">{escape(message)}</div>'
+    
+    form = UPLOAD_FORM.replace("{message_placeholder}", message_html)
+    return form.encode("utf-8")
 
 
 def convert_uploaded_statement(environ) -> tuple[str, str]:
-    form = FieldStorage(fp=environ["wsgi.input"], environ=environ, keep_blank_values=True)
-    if "statement" not in form:
-        raise ValueError("Please choose a statement file.")
+    """Parse multipart form data from WSGI environ and convert the uploaded statement."""
+    content_type = environ.get("CONTENT_TYPE", "")
+    content_length = int(environ.get("CONTENT_LENGTH", 0))
+    
+    if not content_type.startswith("multipart/form-data"):
+        raise ValueError("Request must be multipart/form-data.")
+    
+    if content_length == 0:
+        raise ValueError("Request body is empty.")
 
-    upload = form["statement"]
-    if not getattr(upload, "file", None):
+    boundary = extract_boundary(content_type)
+    if not boundary:
+        raise ValueError("Invalid multipart boundary.")
+
+    body = environ["wsgi.input"].read(content_length)
+    fields = parse_multipart_body(body, boundary)
+    
+    if "statement" not in fields or not fields["statement"]:
+        raise ValueError("Please choose a statement file.")
+    
+    file_data, filename = fields["statement"][0]
+    if not file_data:
         raise ValueError("Uploaded file is empty.")
 
-    account = form.getfirst("account", "Sbi")
-    filename = Path(upload.filename or "statement.xlsx")
-    suffix = filename.suffix.lower() or ".xlsx"
+    suffix = Path(filename).suffix.lower() or ".xlsx"
     if suffix not in {".xlsx", ".xlsm", ".xltx", ".xltm", ".csv"}:
         raise ValueError("Unsupported file type. Use .xlsx or .csv.")
 
+    account = fields.get("account", ["Sbi"])[0][0] if "account" in fields else "Sbi"
+
     with NamedTemporaryFile(suffix=suffix, delete=True) as temp_file:
-        temp_file.write(upload.file.read())
+        temp_file.write(file_data)
         temp_file.flush()
         rows = convert_statement(Path(temp_file.name), account=account)
 
     return rows_to_csv_text(rows), "cashew-export.csv"
+
+
+def extract_boundary(content_type: str) -> str:
+    """Extract the multipart boundary from the Content-Type header."""
+    match = re.search(r'boundary=([^;\s]+)', content_type)
+    return match.group(1).strip('"') if match else ""
+
+
+def parse_multipart_body(body: bytes, boundary: str) -> dict[str, list[tuple[bytes, str]]]:
+    """Parse a multipart/form-data body and return a dict of {field_name: [(content, filename), ...]}."""
+    fields: dict[str, list[tuple[bytes, str]]] = {}
+    parts = body.split(f"--{boundary}".encode())
+    
+    for part in parts[1:-1]:
+        if not part or part == b"--\r\n" or part == b"--":
+            continue
+            
+        try:
+            header_end = part.find(b"\r\n\r\n")
+            if header_end == -1:
+                continue
+            
+            headers_section = part[:header_end].decode("utf-8", errors="replace")
+            content = part[header_end + 4:]
+            
+            if content.endswith(b"\r\n"):
+                content = content[:-2]
+            elif content.endswith(b"\n"):
+                content = content[:-1]
+            
+            name = extract_form_field_name(headers_section)
+            filename = extract_filename(headers_section)
+            
+            if name:
+                if filename:
+                    fields.setdefault(name, []).append((content, filename))
+                else:
+                    fields.setdefault(name, []).append((content.decode("utf-8", errors="replace"), ""))
+        except Exception:
+            continue
+    
+    return fields
+
+
+def extract_form_field_name(headers_section: str) -> str:
+    """Extract the field name from multipart headers."""
+    match = re.search(r'name="([^"]*)"', headers_section)
+    return match.group(1) if match else ""
+
+
+def extract_filename(headers_section: str) -> str:
+    """Extract the filename from multipart headers."""
+    match = re.search(r'filename="([^"]*)"', headers_section)
+    return match.group(1) if match else ""
 
 
 def main(argv: list[str] | None = None) -> int:

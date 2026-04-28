@@ -100,7 +100,7 @@ class ConverterTests(unittest.TestCase):
         self.assertEqual(status[0], "200 OK")
         self.assertEqual(dict(headers)["Content-Type"], "text/csv; charset=utf-8")
         self.assertTrue(response_body.startswith(b"account,amount,currency"))
-        self.assertIn(b"cashew-export.csv", dict(headers)["Content-Disposition"])
+        self.assertIn("cashew-export.csv", dict(headers)["Content-Disposition"])
 
 
 if __name__ == "__main__":
