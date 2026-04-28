@@ -151,7 +151,7 @@ PREVIEW_FORM = """<!doctype html>
     const CATEGORY_OPTIONS = {category_options};
     
     function setupCategoryDropdowns() {
-      const categoryHeader = Array.from(document.querySelectorAll('th')).find(th => th.textContent === 'Category');
+      const categoryHeader = Array.from(document.querySelectorAll('th')).find(th => th.textContent === 'category name');
       if (!categoryHeader) return;
       
       const categoryColumnIndex = Array.from(categoryHeader.parentNode.children).indexOf(categoryHeader);
@@ -179,7 +179,7 @@ PREVIEW_FORM = """<!doctype html>
     }
     
     function setupNoteEdits() {
-      const noteHeader = Array.from(document.querySelectorAll('th')).find(th => th.textContent === 'Note');
+      const noteHeader = Array.from(document.querySelectorAll('th')).find(th => th.textContent === 'note');
       if (!noteHeader) return;
       
       const noteColumnIndex = Array.from(noteHeader.parentNode.children).indexOf(noteHeader);
