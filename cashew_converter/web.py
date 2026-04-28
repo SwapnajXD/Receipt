@@ -150,69 +150,75 @@ PREVIEW_FORM = """<!doctype html>
   <script>
     const CATEGORY_OPTIONS = {category_options};
     
-    function setupCategoryDropdowns() {
-      const categoryHeader = Array.from(document.querySelectorAll('th')).find(th => th.textContent === 'category name');
-      if (!categoryHeader) return;
+    function makeEditable() {
+      const table = document.querySelector('table');
+      const headers = Array.from(table.querySelectorAll('th')).map(th => th.textContent.toLowerCase());
+      const categoryIdx = headers.indexOf('category name');
+      const noteIdx = headers.indexOf('note');
       
-      const categoryColumnIndex = Array.from(categoryHeader.parentNode.children).indexOf(categoryHeader);
-      const cells = document.querySelectorAll('tbody tr td:nth-child(' + (categoryColumnIndex + 1) + ')');
+      const rows = table.querySelectorAll('tbody tr');
       
-      cells.forEach((cell, idx) => {
-        const currentValue = cell.textContent;
-        cell.addEventListener('click', function(e) {
-          if (e.target.tagName === 'SELECT') return;
-          const select = document.createElement('select');
-          select.innerHTML = CATEGORY_OPTIONS;
-          select.value = currentValue;
-          cell.innerHTML = '';
-          cell.appendChild(select);
-          select.focus();
-          
-          const saveCategory = () => {
-            cell.textContent = select.value;
-          };
-          
-          select.addEventListener('blur', saveCategory);
-          select.addEventListener('change', saveCategory);
-        });
-      });
-    }
-    
-    function setupNoteEdits() {
-      const noteHeader = Array.from(document.querySelectorAll('th')).find(th => th.textContent === 'note');
-      if (!noteHeader) return;
-      
-      const noteColumnIndex = Array.from(noteHeader.parentNode.children).indexOf(noteHeader);
-      const cells = document.querySelectorAll('tbody tr td:nth-child(' + (noteColumnIndex + 1) + ')');
-      
-      cells.forEach((cell) => {
-        const value = cell.textContent;
-        cell.classList.add('note-display');
-        cell.addEventListener('click', function(e) {
-          if (e.target.tagName === 'INPUT') return;
-          const input = document.createElement('input');
-          input.type = 'text';
-          input.className = 'note-input';
-          input.value = value;
-          cell.innerHTML = '';
-          cell.appendChild(input);
-          input.focus();
-          input.select();
-          
-          const saveNote = () => {
-            cell.textContent = input.value;
-            cell.classList.add('note-display');
-          };
-          
-          input.addEventListener('blur', saveNote);
-          input.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') this.blur();
-            if (e.key === 'Escape') {
-              cell.textContent = value;
-              cell.classList.add('note-display');
-            }
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        
+        // Make category cells editable with dropdown
+        if (categoryIdx !== -1 && cells[categoryIdx]) {
+          const cell = cells[categoryIdx];
+          cell.style.cursor = 'pointer';
+          cell.addEventListener('click', function(e) {
+            if (this.querySelector('select')) return;
+            const currentValue = this.textContent;
+            const select = document.createElement('select');
+            select.innerHTML = CATEGORY_OPTIONS;
+            select.value = currentValue;
+            this.innerHTML = '';
+            this.appendChild(select);
+            select.focus();
+            
+            const saveValue = () => {
+              this.textContent = select.value;
+              this.style.cursor = 'pointer';
+            };
+            
+            select.addEventListener('blur', saveValue);
+            select.addEventListener('change', saveValue);
           });
-        });
+        }
+        
+        // Make note cells editable with input
+        if (noteIdx !== -1 && cells[noteIdx]) {
+          const cell = cells[noteIdx];
+          cell.style.cursor = 'pointer';
+          cell.addEventListener('click', function(e) {
+            if (this.querySelector('input')) return;
+            const currentValue = this.textContent;
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.style.width = '100%';
+            input.style.padding = '6px 8px';
+            input.style.border = '1px solid #d8d3c7';
+            input.style.borderRadius = '6px';
+            input.value = currentValue;
+            this.innerHTML = '';
+            this.appendChild(input);
+            input.focus();
+            input.select();
+            
+            const saveValue = () => {
+              this.textContent = input.value;
+              this.style.cursor = 'pointer';
+            };
+            
+            input.addEventListener('blur', saveValue);
+            input.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') input.blur();
+              if (e.key === 'Escape') {
+                this.textContent = currentValue;
+                this.style.cursor = 'pointer';
+              }
+            });
+          });
+        }
       });
     }
     
@@ -223,7 +229,7 @@ PREVIEW_FORM = """<!doctype html>
       const bodyRows = table.querySelectorAll('tbody tr');
       bodyRows.forEach(tr => {
         const cells = tr.querySelectorAll('td');
-        const row = {}</;
+        const row = {};
         headers.forEach((header, i) => {
           row[header] = cells[i]?.textContent || '';
         });
@@ -254,8 +260,7 @@ PREVIEW_FORM = """<!doctype html>
     }
     
     window.addEventListener('load', () => {
-      setupCategoryDropdowns();
-      setupNoteEdits();
+      makeEditable();
     });
   </script>
 </head>
