@@ -7,7 +7,6 @@ from tempfile import NamedTemporaryFile
 from urllib.parse import parse_qs
 from wsgiref.simple_server import make_server
 import csv
-import json
 import re
 
 from .models import CASHEW_COLUMNS, CashewRow
@@ -93,20 +92,49 @@ UPLOAD_FORM = """<!doctype html>
 </html>
 """
 
-CATEGORY_OPTIONS = """<optgroup label="Income">
-<option value="Income">Income</option>
-</optgroup>
-<optgroup label="Expense">
-<option value="Groceries">Groceries</option>
-<option value="Travel">Travel</option>
-<option value="Bills & Fees">Bills & Fees</option>
-<option value="Dining">Dining</option>
-<option value="Personal Care">Personal Care</option>
-<option value="Gifts">Gifts</option>
-<option value="Shopping">Shopping</option>
-<option value="Transfers">Transfers</option>
-</optgroup>
-"""
+CATEGORY_CHOICES = [
+  "Income",
+  "Groceries",
+  "Travel",
+  "Bills & Fees",
+  "Dining",
+  "Personal Care",
+  "Gifts",
+  "Shopping",
+  "Transfers",
+]
+
+SUBCATEGORY_CHOICES = [
+  "FastFood",
+  "Cafes",
+  "Trains",
+  "Recharge",
+  "Toiletries",
+  "Clothing",
+]
+
+
+def render_category_options(selected: str) -> str:
+  return "\n".join(
+    f'<option value="{escape(choice)}"{" selected" if choice == selected else ""}>{escape(choice)}</option>'
+    for choice in CATEGORY_CHOICES
+  )
+
+
+def render_select_options(choices: list[str], selected: str) -> str:
+  option_choices = [""] + [choice for choice in choices if choice]
+  if selected and selected not in option_choices:
+    option_choices = ["", selected, *[choice for choice in choices if choice and choice != selected]]
+
+  return "\n".join(
+    f'<option value="{escape(choice)}"{" selected" if choice == selected else ""}>{escape(choice) or "&nbsp;"}</option>'
+    for choice in option_choices
+  )
+
+
+def display_cell_value(value: object) -> str:
+  text = "" if value is None else str(value)
+  return "" if text.lower() in {"none", "null"} else text
 
 PREVIEW_FORM = """<!doctype html>
 <html lang="en">
@@ -138,90 +166,15 @@ PREVIEW_FORM = """<!doctype html>
     tbody tr:hover { background: #fffbf0; }
     td.date { font-size: 0.9rem; color: #6b7280; font-family: monospace; }
     td.amount { font-family: 'Courier New', monospace; font-weight: 600; }
-    td.category-cell { min-width: 140px; }
-    select { width: 100%; padding: 6px 8px; border: 1px solid #d8d3c7; border-radius: 6px; font-family: inherit; font-size: inherit; background: white; cursor: pointer; }
-    select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(15,118,110,0.1); }
-    input.note-input { width: 100%; padding: 6px 8px; border: 1px solid #d8d3c7; border-radius: 6px; font-family: inherit; font-size: inherit; }
-    input.note-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(15,118,110,0.1); }
-    .note-display { cursor: pointer; padding: 6px 0; }
-    .note-display:hover { color: var(--accent); }
+    td.category-cell, td.subcategory-cell { min-width: 180px; }
+    td.note-cell { min-width: 220px; }
+    .cell-control { width: 100%; border: 1px solid #d8d3c7; border-radius: 6px; background: white; font: inherit; color: inherit; padding: 7px 8px; }
+    .cell-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(15,118,110,0.1); }
+    .cell-control.select-control { cursor: pointer; }
+    .cell-control.input-control { min-width: 180px; }
     .success-banner { background: #ecfdf5; border-left: 4px solid var(--success); padding: 16px; border-radius: 6px; margin-bottom: 20px; color: #065f46; font-size: 0.95rem; display: none; }
   </style>
   <script>
-    const CATEGORY_OPTIONS = {category_options};
-    
-    function makeEditable() {
-      const table = document.querySelector('table');
-      const headers = Array.from(table.querySelectorAll('th')).map(th => th.textContent.toLowerCase());
-      const categoryIdx = headers.indexOf('category name');
-      const noteIdx = headers.indexOf('note');
-      
-      const rows = table.querySelectorAll('tbody tr');
-      
-      rows.forEach(row => {
-        const cells = row.querySelectorAll('td');
-        
-        // Make category cells editable with dropdown
-        if (categoryIdx !== -1 && cells[categoryIdx]) {
-          const cell = cells[categoryIdx];
-          cell.style.cursor = 'pointer';
-          cell.addEventListener('click', function(e) {
-            if (this.querySelector('select')) return;
-            const currentValue = this.textContent;
-            const select = document.createElement('select');
-            select.innerHTML = CATEGORY_OPTIONS;
-            select.value = currentValue;
-            this.innerHTML = '';
-            this.appendChild(select);
-            select.focus();
-            
-            const saveValue = () => {
-              this.textContent = select.value;
-              this.style.cursor = 'pointer';
-            };
-            
-            select.addEventListener('blur', saveValue);
-            select.addEventListener('change', saveValue);
-          });
-        }
-        
-        // Make note cells editable with input
-        if (noteIdx !== -1 && cells[noteIdx]) {
-          const cell = cells[noteIdx];
-          cell.style.cursor = 'pointer';
-          cell.addEventListener('click', function(e) {
-            if (this.querySelector('input')) return;
-            const currentValue = this.textContent;
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.style.width = '100%';
-            input.style.padding = '6px 8px';
-            input.style.border = '1px solid #d8d3c7';
-            input.style.borderRadius = '6px';
-            input.value = currentValue;
-            this.innerHTML = '';
-            this.appendChild(input);
-            input.focus();
-            input.select();
-            
-            const saveValue = () => {
-              this.textContent = input.value;
-              this.style.cursor = 'pointer';
-            };
-            
-            input.addEventListener('blur', saveValue);
-            input.addEventListener('keydown', (e) => {
-              if (e.key === 'Enter') input.blur();
-              if (e.key === 'Escape') {
-                this.textContent = currentValue;
-                this.style.cursor = 'pointer';
-              }
-            });
-          });
-        }
-      });
-    }
-    
     function collectTableData() {
       const rows = [];
       const table = document.querySelector('table');
@@ -231,7 +184,8 @@ PREVIEW_FORM = """<!doctype html>
         const cells = tr.querySelectorAll('td');
         const row = {};
         headers.forEach((header, i) => {
-          row[header] = cells[i]?.textContent || '';
+          const field = cells[i]?.querySelector('input, select');
+          row[header] = field ? field.value : (cells[i]?.textContent || '');
         });
         rows.push(row);
       });
@@ -259,9 +213,6 @@ PREVIEW_FORM = """<!doctype html>
       setTimeout(() => banner.style.display = 'none', 3000);
     }
     
-    window.addEventListener('load', () => {
-      makeEditable();
-    });
   </script>
 </head>
 <body>
@@ -333,17 +284,67 @@ def render_upload_page(message: str = "", error: bool = False) -> bytes:
 def render_preview_page(rows: list[CashewRow]) -> bytes:
     """Render an editable preview table of the converted transactions."""
     headers = " ".join(f"<th>{escape(col)}</th>" for col in CASHEW_COLUMNS)
-    
+    subcategory_choices = sorted(
+        {
+            *SUBCATEGORY_CHOICES,
+            *{
+                str(row.to_csv_row().get("subcategory name", "")).strip()
+                for row in rows
+                if str(row.to_csv_row().get("subcategory name", "")).strip()
+            },
+        }
+    )
+
     table_rows_html = ""
     for row in rows:
         csv_row = row.to_csv_row()
-        cells = " ".join(f"<td>{escape(str(csv_row.get(col, '')))}</td>" for col in CASHEW_COLUMNS)
+        cell_html: list[str] = []
+        for col in CASHEW_COLUMNS:
+            value = display_cell_value(csv_row.get(col, ""))
+            if col == "category name":
+                cell_html.append(
+                    '<td class="category-cell">'
+                    f'<select class="cell-control select-control" name="{escape(col)}">'
+                    f"{render_category_options(value)}"
+                    "</select>"
+                    "</td>"
+                )
+            elif col == "subcategory name":
+                cell_html.append(
+                    '<td class="subcategory-cell">'
+                    f'<select class="cell-control select-control" name="{escape(col)}">'
+                    f'{render_select_options(subcategory_choices, value)}'
+                    "</select>"
+                    "</td>"
+                )
+            elif col == "note":
+                cell_html.append(
+                    '<td class="note-cell">'
+                    f'<input class="cell-control input-control" type="text" name="{escape(col)}" value="{escape(value)}">'
+                    "</td>"
+                )
+            elif col == "income":
+                cell_html.append(
+                    "<td>"
+                    f'<select class="cell-control select-control" name="{escape(col)}">'
+                    f'{render_select_options(["true", "false"], value.lower())}'
+                    "</select>"
+                    "</td>"
+                )
+            else:
+                input_type = "number" if col == "amount" else "text"
+                extra_attrs = ' step="any"' if col == "amount" else ""
+                cell_html.append(
+                    "<td>"
+                    f'<input class="cell-control input-control" type="{input_type}" name="{escape(col)}" value="{escape(value)}"{extra_attrs}>'
+                    "</td>"
+                )
+        cells = " ".join(cell_html)
         table_rows_html += f"<tr>{cells}</tr>\n"
     
     preview = PREVIEW_FORM.replace("{row_count}", str(len(rows)))
     preview = preview.replace("{table_headers}", headers)
     preview = preview.replace("{table_rows}", table_rows_html)
-    preview = preview.replace("{category_options}", json.dumps(CATEGORY_OPTIONS))
     return preview.encode("utf-8")
 
 

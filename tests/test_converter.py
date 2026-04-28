@@ -103,6 +103,9 @@ class ConverterTests(unittest.TestCase):
         self.assertIn(b"139 transactions", response_body)
         self.assertIn(b"<th>account</th>", response_body)
         self.assertIn(b"<th>amount</th>", response_body)
+        self.assertIn(b'<select class="cell-control select-control"', response_body)
+        self.assertIn(b'name="subcategory name"', response_body)
+        self.assertIn(b'<input class="cell-control input-control"', response_body)
         self.assertIn(b"Download CSV", response_body)
 
 
