@@ -325,13 +325,25 @@ PREVIEW_FORM = """<!doctype html>
         showBanner(String(error.message || error), true);
       }
     }
+
+    window.downloadEdited = downloadEdited;
+    window.learnCategoryRules = learnCategoryRules;
     
+    function escapeCSV(field) {
+      const str = String(field || '');
+      if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+        return '"' + str.replace(/"/g, '""') + '"';
+      }
+      return str;
+    }
+
     function downloadEdited() {
       const data = collectTableData();
-      const headers = Array.from(document.querySelectorAll('table th')).map(th => th.textContent);
-      const csv = [headers.map(h => '"' + h.replace(/"/g, '""') + '"').join(',')];
+      const allHeaders = Array.from(document.querySelectorAll('table th')).map(th => th.textContent);
+      const headers = allHeaders.slice(1); // Skip first column (selector checkbox)
+      const csv = [headers.map(h => escapeCSV(h)).join(',')];
       data.forEach(row => {
-        csv.push(headers.map(h => '"' + String(row[h] || '').replace(/"/g, '""') + '"').join(','));
+        csv.push(headers.map(h => escapeCSV(row[h])).join(','));
       });
       const blob = new Blob([csv.join('\\n')], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
@@ -352,6 +364,16 @@ PREVIEW_FORM = """<!doctype html>
           selectAllRows(event.target.checked);
         });
       }
+
+      const downloadButton = document.getElementById('download-btn');
+      if (downloadButton) {
+        downloadButton.addEventListener('click', downloadEdited);
+      }
+
+      const learnButton = document.getElementById('learn-btn');
+      if (learnButton) {
+        learnButton.addEventListener('click', learnCategoryRules);
+      }
     });
   </script>
 </head>
@@ -369,8 +391,8 @@ PREVIEW_FORM = """<!doctype html>
     <div class="success-banner">✓ CSV downloaded successfully!</div>
     
     <div class="controls">
-      <button onclick="downloadEdited()">⬇ Download CSV</button>
-      <button onclick="learnCategoryRules()" type="button">🧠 Learn Category Rules</button>
+      <button id="download-btn" type="button">⬇ Download CSV</button>
+      <button id="learn-btn" type="button">🧠 Learn Category Rules</button>
       <div class="divider"></div>
       <form action="/" method="get" style="margin:0; display:inline;">
         <button type="submit" class="secondary">+ Convert Another</button>
