@@ -115,7 +115,7 @@ def transaction_to_cashew(transaction: StatementTransaction, account: str) -> Ca
         note=transaction.description,
         date=transaction.date,
         income=transaction.income,
-        row_type="null",
+        row_type="",
         category_name=style.category,
         subcategory_name=style.subcategory,
         color=style.color,

@@ -43,7 +43,7 @@ class ConverterTests(unittest.TestCase):
         self.assertGreater(len(rows), 0)
         first_row = rows[0].to_csv_row()
         self.assertEqual(list(first_row.keys()), CASHEW_COLUMNS)
-        self.assertEqual(first_row["income"], "true")
+        self.assertEqual(first_row["income"], "True")
         self.assertEqual(first_row["category name"], "Income")
 
     def test_keyword_rules_cover_sample_transactions(self) -> None:

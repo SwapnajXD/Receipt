@@ -67,7 +67,7 @@ class CashewRow:
             "title": self.title,
             "note": self.note,
             "date": format_date(self.date),
-            "income": "true" if self.income else "false",
+            "income": "True" if self.income else "False",
             "type": self.row_type,
             "category name": self.category_name,
             "subcategory name": self.subcategory_name,
@@ -88,4 +88,5 @@ def format_amount(amount: Decimal) -> str:
 
 
 def format_date(value: datetime) -> str:
-    return value.strftime("%Y-%m-%d %H:%M:%S.000")
+    # Keep a stable noon timestamp so imports behave consistently.
+    return value.strftime("%Y-%m-%d") + " 12:00:00.000"
