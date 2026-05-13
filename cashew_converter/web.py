@@ -505,58 +505,62 @@ PREVIEW_FORM = """<!doctype html>
   </script>
 </head>
 <body>
-<main>
-  <div class="container">
-    <div class="header">
-      <h1>✓ Conversion Complete</h1>
-      <p class="subtitle">Review, edit, and download your transactions</p>
-      <div class="stats">
-        <span>📊 {row_count} transactions processed</span>
+  <div class="preview-page">
+    <div class="preview-container">
+      <div class="preview-header">
+        <h1>Conversion <span>Complete</span></h1>
+        <p class="preview-subtitle">Review, edit, and export your transactions</p>
+      </div>
+
+      <div class="header-row">
+        <div class="header-stats">
+          <div class="stat-badge">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+            <span>{row_count} transactions</span>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary" id="download-btn">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+            Download CSV
+          </button>
+          <button class="btn btn-secondary" id="learn-btn">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+            Learn Rules
+          </button>
+          <button class="btn btn-ghost" onclick="location.href='/'">+ New</button>
+        </div>
+      </div>
+
+      <div class="bulk-panel" id="bulk-panel">
+        <span class="bulk-label">Bulk edit:</span>
+        <select class="bulk-select" id="bulk-field">
+          <option value="category name">Category</option>
+          <option value="subcategory name">Subcategory</option>
+          <option value="income">Income/Expense</option>
+          <option value="note">Note</option>
+        </select>
+        <input type="text" class="bulk-input" id="bulk-value" placeholder="Enter value...">
+        <div class="bulk-actions">
+          <button class="btn btn-secondary" onclick="applyBulkEdit(false)">Apply Selected</button>
+          <button class="btn btn-secondary" onclick="applyBulkEdit(true)">Apply All</button>
+          <button class="btn btn-ghost" onclick="selectAllRows(false)">Clear</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <div class="table-scroll">
+          <table>
+            <thead><tr>{table_headers}</tr></thead>
+            <tbody>{table_rows}</tbody>
+          </table>
+        </div>
       </div>
     </div>
-    
-    <div class="success-banner">✓ CSV downloaded successfully!</div>
-    
-    <div class="controls">
-      <button id="download-btn" type="button">⬇ Download CSV</button>
-      <button id="learn-btn" type="button">🧠 Learn Category Rules</button>
-      <div class="divider"></div>
-      <form action="/" method="get" style="margin:0; display:inline;">
-        <button type="submit" class="secondary">+ Convert Another</button>
-      </form>
-    </div>
 
-    <div class="bulk-panel">
-      <label for="bulk-field">Bulk edit field</label>
-      <select id="bulk-field" class="cell-control select-control bulk-control" onchange="updateBulkValueControl()">
-        <option value="category name">category name</option>
-        <option value="subcategory name">subcategory name</option>
-        <option value="income">income</option>
-        <option value="budget">budget</option>
-        <option value="type">type</option>
-        <option value="note">note</option>
-      </select>
-
-      <label for="bulk-value-input">Value</label>
-      <input id="bulk-value-input" class="cell-control input-control bulk-control" type="text" placeholder="Enter value">
-      <select id="bulk-value-select" class="cell-control select-control bulk-control" style="display:none;"></select>
-
-      <div class="bulk-actions">
-        <button type="button" onclick="applyBulkEdit(false)">Apply To Selected</button>
-        <button type="button" onclick="applyBulkEdit(true)">Apply To All</button>
-        <button type="button" class="ghost" onclick="selectAllRows(true)">Select All</button>
-        <button type="button" class="ghost" onclick="selectAllRows(false)">Clear Selection</button>
-      </div>
-    </div>
-    
-    <div class="table-wrapper">
-      <table>
-        <thead><tr>{table_headers}</tr></thead>
-        <tbody>{table_rows}</tbody>
-      </table>
-    </div>
+    <div class="toast" id="toast"></div>
   </div>
-</main>
 </body>
 </html>
 """
@@ -592,8 +596,8 @@ def render_upload_page(message: str = "", error: bool = False) -> bytes:
     else:
         css_class = "error" if error else "success"
         message_html = f'<div class="{css_class}">{escape(message)}</div>'
-    
-    form = UPLOAD_FORM.replace("{message_placeholder}", message_html)
+
+    form = UPLOAD_FORM.replace("{message_html}", message_html).replace("{account_value}", "Sbi")
     return form.encode("utf-8")
 
 
