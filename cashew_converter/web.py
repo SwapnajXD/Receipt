@@ -21,75 +21,145 @@ UPLOAD_FORM = """<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cashew Converter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    :root { color-scheme: light; --bg: #f4f1ea; --panel: #fffaf2; --ink: #1f2937; --muted: #6b7280; --accent: #0f766e; --accent-2: #115e59; --border: #d8d3c7; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: linear-gradient(180deg, #f8f4eb 0%, #efe7da 100%); color: var(--ink); }
-    main { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
-    .card { width: min(720px, 100%); background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(216,211,199,0.9); border-radius: 20px; padding: 32px; box-shadow: 0 24px 80px rgba(31,41,55,0.12); }
-    h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.02; letter-spacing: -0.04em; font-weight: 700; }
-    p { margin: 0 0 24px; color: var(--muted); line-height: 1.6; font-size: 1.05rem; }
-    form { display: grid; gap: 18px; margin-top: 26px; }
-    label { display: grid; gap: 8px; font-weight: 600; color: var(--ink); font-size: 1rem; }
-    input[type="text"], input[type="file"] { width: 100%; padding: 13px 15px; border-radius: 10px; border: 2px solid var(--border); background: #fff; font: inherit; transition: border-color 0.2s; }
-    input[type="text"]:focus, input[type="file"]:focus { outline: none; border-color: var(--accent); }
-    .form-hint { font-size: 0.88rem; color: var(--muted); font-weight: 400; margin-top: -4px; }
-    .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 28px; }
-    button { appearance: none; border: 0; border-radius: 10px; padding: 13px 22px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; font: inherit; font-weight: 700; cursor: pointer; font-size: 1rem; transition: transform 0.15s, box-shadow 0.15s; }
-    button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,118,110,0.3); }
-    button:active { transform: translateY(0); }
-    .hint-text { font-size: 0.95rem; color: var(--muted); }
-    .features { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); display: grid; gap: 12px; }
-    .feature { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; color: var(--muted); }
-    .feature-icon { color: var(--accent); font-weight: 700; font-size: 1.2rem; flex-shrink: 0; }
-    .error { margin-top: 20px; padding: 16px 18px; border-radius: 12px; background: #fef2f2; color: #991b1b; border-left: 4px solid #f87171; border-radius: 8px; }
-    .success { margin-top: 20px; padding: 16px 18px; border-radius: 12px; background: #ecfdf5; color: #065f46; border-left: 4px solid #6ee7b7; border-radius: 8px; }
-    code { background: #f3f4f6; padding: 3px 7px; border-radius: 6px; font-family: 'Courier New', monospace; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #1a1a1a; --paper: #faf9f7; --paper-dark: #f0ede8; --muted: #6b6b6b; --muted-light: #9a9a9a; --border: #e5e2dc; --accent: #c9553d; --accent-dark: #a3432d; --accent-light: #fdf4f2; --success: #2d8659; --error: #c9302c; --shadow-sm: 0 1px 2px rgba(0,0,0,0.04); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --shadow-lg: 0 12px 32px rgba(0,0,0,0.12); --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; line-height: 1.5; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: -1; }
+    .upload-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .upload-container { width: 100%; max-width: 520px; animation: fadeIn 0.6s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .logo { text-align: center; margin-bottom: 32px; }
+    .logo h1 { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(2.5rem, 6vw, 3.25rem); font-weight: 400; letter-spacing: -0.02em; color: var(--ink); }
+    .logo h1 span { font-style: italic; color: var(--accent); }
+    .logo p { color: var(--muted); margin-top: 8px; font-size: 1.05rem; }
+    .upload-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-md); }
+    .dropzone { border: 2px dashed var(--border); border-radius: var(--radius-md); padding: 40px 24px; text-align: center; cursor: pointer; transition: all 0.25s ease; background: var(--paper); position: relative; overflow: hidden; }
+    .dropzone::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 40%, rgba(201,85,61,0.03) 100%); opacity: 0; transition: opacity 0.25s; }
+    .dropzone:hover, .dropzone.dragover { border-color: var(--accent); background: var(--accent-light); }
+    .dropzone:hover::before, .dropzone.dragover::before { opacity: 1; }
+    .dropzone-icon { width: 48px; height: 48px; margin: 0 auto 16px; background: var(--accent-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .dropzone-icon svg { width: 24px; height: 24px; stroke: var(--accent); }
+    .dropzone h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
+    .dropzone p { color: var(--muted); font-size: 0.9rem; }
+    .dropzone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+    .file-status { display: none; margin-top: 16px; padding: 12px 16px; background: var(--paper-dark); border-radius: var(--radius-sm); font-size: 0.9rem; align-items: center; gap: 10px; }
+    .file-status.visible { display: flex; }
+    .file-status svg { flex-shrink: 0; }
+    .file-name { font-weight: 500; color: var(--ink); }
+    .file-size { color: var(--muted); font-size: 0.85rem; }
+    .form-group { margin-top: 24px; }
+    .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--ink); }
+    .form-group input[type="text"] { width: 100%; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 1rem; font-family: inherit; background: #fff; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-group input[type="text"]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+    .form-hint { margin-top: 6px; font-size: 0.85rem; color: var(--muted); }
+    .submit-btn { width: 100%; margin-top: 28px; padding: 16px 24px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 1rem; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .submit-btn:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(201,85,61,0.3); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn svg { width: 18px; height: 18px; }
+    .message { margin-top: 20px; padding: 14px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; display: none; }
+    .message.visible { display: block; animation: fadeIn 0.3s ease-out; }
+    .message.error { background: #fef2f2; color: var(--error); border-left: 3px solid var(--error); }
+    .message.success { background: #f0fdf4; color: var(--success); border-left: 3px solid var(--success); }
+    .features { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .features h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-light); margin-bottom: 16px; }
+    .feature-list { display: grid; gap: 12px; }
+    .feature-item { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: var(--muted); }
+    .feature-item svg { width: 18px; height: 18px; stroke: var(--accent); flex-shrink: 0; margin-top: 2px; }
   </style>
 </head>
 <body>
-<main>
-  <section class="card">
-    <h1>💳 Cashew Converter</h1>
-    <p>Convert your bank statement to Cashew-ready CSV format. Preview and edit before downloading.</p>
-    
-    <form method="post" enctype="multipart/form-data">
-      <label>
-        Statement file
+<form method="post" enctype="multipart/form-data" class="upload-page" id="upload-form" style="display:none;">
+  <div class="upload-container">
+    <div class="logo">
+      <h1>Cashew<span>Converter</span></h1>
+      <p>Transform bank statements into structured data</p>
+    </div>
+
+    <div class="upload-card">
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+          </svg>
+        </div>
+        <h3>Drop your statement here</h3>
+        <p>or click to browse files</p>
         <input type="file" name="statement" accept=".xlsx,.csv" required>
-        <span class="form-hint">Supports .xlsx and .csv formats</span>
-      </label>
-      
-      <label>
-        Account name
-        <input type="text" name="account" value="Sbi" maxlength="64">
-        <span class="form-hint">Name to label transactions with</span>
-      </label>
-      
-      <div class="actions">
-        <button type="submit">⚡ Convert & Preview</button>
-        <span class="hint-text">Edit before downloading</span>
       </div>
-    </form>
-    
-    <div class="features">
-      <div class="feature">
-        <span class="feature-icon">✎</span>
-        <span><strong>Edit inline:</strong> Click any cell to edit dates, amounts, categories, or notes</span>
+
+      <div class="file-status" id="file-status">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:20px;height:20px;color:var(--success)">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="file-name" id="file-name"></span>
+        <span class="file-size" id="file-size"></span>
       </div>
-      <div class="feature">
-        <span class="feature-icon">🎯</span>
-        <span><strong>Smart categories:</strong> Auto-categorize transactions; adjust with dropdown menu</span>
+
+      <div class="form-group">
+        <label for="account">Account name</label>
+        <input type="text" id="account" name="account" value="{account_value}" maxlength="64" placeholder="e.g., SBI, HDFC, Chase">
+        <p class="form-hint">This label identifies your transactions</p>
       </div>
-      <div class="feature">
-        <span class="feature-icon">⬇</span>
-        <span><strong>Download:</strong> Export your customized CSV in Cashew format</span>
+
+      <button type="submit" class="submit-btn">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+        Convert & Preview
+      </button>
+
+      <div class="message" id="message">{message_html}</div>
+
+      <div class="features">
+        <h4>What you can do</h4>
+        <div class="feature-list">
+          <div class="feature-item">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>Edit transactions inline — click any field to modify</span>
+          </div>
+          <div class="feature-item">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            <span>Bulk edit — select multiple rows and update at once</span>
+          </div>
+          <div class="feature-item">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+            <span>Download CSV ready for Cashew import</span>
+          </div>
+        </div>
       </div>
     </div>
-    
-    {message_placeholder}
-  </section>
-</main>
+  </div>
+</form>
+
+<script>
+document.getElementById('upload-form').style.display = 'flex';
+const dropzone = document.getElementById('dropzone');
+const fileInput = dropzone.querySelector('input[type="file"]');
+const fileStatus = document.getElementById('file-status');
+const fileName = document.getElementById('file-name');
+const fileSize = document.getElementById('file-size');
+
+['dragenter', 'dragover'].forEach(evt => {
+  dropzone.addEventListener(evt, e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+});
+['dragleave', 'drop'].forEach(evt => {
+  dropzone.addEventListener(evt, e => { e.preventDefault(); dropzone.classList.remove('dragover'); });
+});
+dropzone.addEventListener('drop', e => {
+  if (e.dataTransfer.files.length) { fileInput.files = e.dataTransfer.files; updateFileStatus(e.dataTransfer.files[0]); }
+});
+fileInput.addEventListener('change', () => { if (fileInput.files.length) updateFileStatus(fileInput.files[0]); });
+function updateFileStatus(file) {
+  fileName.textContent = file.name;
+  const size = file.size / 1024;
+  fileSize.textContent = size > 1024 ? (size / 1024).toFixed(1) + ' MB' : size.toFixed(0) + ' KB';
+  fileStatus.classList.add('visible');
+}
+</script>
 </body>
 </html>
 """
@@ -151,11 +221,68 @@ PREVIEW_FORM = """<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cashew Converter - Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    :root { color-scheme: light; --accent: #0f766e; --accent-2: #115e59; --success: #10b981; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: linear-gradient(180deg, #f8f4eb 0%, #efe7da 100%); color: #1f2937; }
-    main { min-height: 100vh; padding: 24px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #1a1a1a; --paper: #faf9f7; --paper-dark: #f0ede8; --muted: #6b6b6b; --muted-light: #9a9a9a; --border: #e5e2dc; --accent: #c9553d; --accent-dark: #a3432d; --accent-light: #fdf4f2; --success: #2d8659; --error: #c9302c; --shadow-sm: 0 1px 2px rgba(0,0,0,0.04); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --shadow-lg: 0 12px 32px rgba(0,0,0,0.12); --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; line-height: 1.5; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: -1; }
+    .preview-page { min-height: 100vh; padding: 32px 24px; animation: fadeIn 0.5s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .preview-container { max-width: 1400px; margin: 0 auto; }
+    .preview-header { margin-bottom: 28px; }
+    .preview-header h1 { font-family: 'Instrument Serif', Georgia, serif; font-size: 2.25rem; font-weight: 400; letter-spacing: -0.01em; }
+    .preview-header h1 span { color: var(--accent); font-style: italic; }
+    .preview-subtitle { color: var(--muted); margin-top: 4px; }
+    .header-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+    .header-stats { display: flex; align-items: center; gap: 20px; font-size: 0.9rem; color: var(--muted); }
+    .stat-badge { display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--paper-dark); border-radius: 20px; }
+    .stat-badge svg { width: 16px; height: 16px; }
+    .action-buttons { display: flex; gap: 10px; }
+    .btn { padding: 10px 18px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; border: none; }
+    .btn svg { width: 16px; height: 16px; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dark); box-shadow: 0 4px 12px rgba(201,85,61,0.25); }
+    .btn-secondary { background: var(--paper-dark); color: var(--ink); }
+    .btn-secondary:hover { background: var(--border); }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .btn-ghost:hover { background: var(--paper-dark); color: var(--ink); }
+    .bulk-panel { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; display: none; align-items: center; flex-wrap: wrap; gap: 12px; box-shadow: var(--shadow-sm); }
+    .bulk-panel.visible { display: flex; animation: fadeIn 0.3s ease-out; }
+    .bulk-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+    .bulk-select, .bulk-input { padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.9rem; font-family: inherit; background: #fff; min-width: 140px; }
+    .bulk-select:focus, .bulk-input:focus { outline: none; border-color: var(--accent); }
+    .bulk-actions { display: flex; gap: 8px; margin-left: auto; }
+    .bulk-actions .btn { padding: 8px 14px; font-size: 0.85rem; }
+    .table-wrapper { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); }
+    .table-scroll { max-height: 75vh; overflow-y: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    thead { position: sticky; top: 0; z-index: 10; }
+    th { background: var(--paper-dark); padding: 14px 12px; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); border-bottom: 2px solid var(--border); white-space: nowrap; }
+    th.selector-col { width: 48px; text-align: center; }
+    td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    td.selector-col { text-align: center; }
+    tbody tr { transition: background 0.15s; animation: slideUp 0.4s ease-out backwards; }
+    tbody tr:hover { background: var(--accent-light); }
+    tbody tr.selected { background: var(--accent-light); }
+    input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+    .cell-input, .cell-select { width: 100%; padding: 8px 10px; border: 1px solid transparent; border-radius: 4px; font-size: 0.9rem; font-family: inherit; background: transparent; transition: all 0.2s; }
+    .cell-input:hover, .cell-select:hover { border-color: var(--border); background: #fff; }
+    .cell-input:focus, .cell-select:focus { outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 2px var(--accent-light); }
+    .cell-input.amount { font-family: 'DM Sans', monospace; font-weight: 600; }
+    .cell-input.date { font-family: 'DM Sans', monospace; color: var(--muted); }
+    .cell-select { cursor: pointer; min-width: 120px; }
+    .income-badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+    .income-badge.income { background: #dcfce7; color: #166534; }
+    .income-badge.expense { background: #fee2e2; color: #991b1b; }
+    .toast { position: fixed; bottom: 24px; right: 24px; padding: 14px 20px; background: var(--ink); color: #fff; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500; box-shadow: var(--shadow-lg); transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 1000; }
+    .toast.visible { transform: translateY(0); opacity: 1; }
+    .toast.success { background: var(--success); }
+    .toast.error { background: var(--error); }
+    @media (max-width: 768px) { .header-row { flex-direction: column; align-items: stretch; } .header-stats { justify-content: center; } .action-buttons { justify-content: center; } .bulk-panel { flex-direction: column; align-items: stretch; } .bulk-actions { margin-left: 0; justify-content: stretch; } .bulk-actions .btn { flex: 1; } .table-scroll { max-height: 60vh; } th, td { padding: 10px 8px; font-size: 0.85rem; } }
     .container { max-width: 1400px; margin: 0 auto; }
     .header { margin-bottom: 28px; }
     h1 { margin: 0 0 8px; font-size: 2.2rem; font-weight: 700; }
