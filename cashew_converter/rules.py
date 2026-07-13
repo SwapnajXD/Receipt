@@ -42,6 +42,7 @@ RULES: list[tuple[re.Pattern[str], CategoryStyle]] = [
 
 LEARNED_RULES_PATH = Path(__file__).resolve().parent / "learned_rules.json"
 _LEARNED_RULES_CACHE: dict[str, dict[str, str]] | None = None
+_MIN_SUBSTRING_MATCH_LENGTH = 4
 
 
 def _normalize_learning_key(text: str) -> str:
@@ -124,8 +125,11 @@ def classify(transaction: StatementTransaction) -> CategoryStyle:
             return _style_from_payload(learned_rules[learned_key])
 
         searchable_key = _normalize_learning_key(transaction.description)
+        # Require a minimum key length before allowing substring matches: a short learned
+        # key like "pay" or "upi" would otherwise match almost any transaction description
+        # and silently override the exact-match / regex rules below.
         for key, payload in learned_rules.items():
-            if key and key in searchable_key:
+            if len(key) >= _MIN_SUBSTRING_MATCH_LENGTH and key in searchable_key:
                 return _style_from_payload(payload)
 
     searchable_text = f"{transaction.description}".upper()

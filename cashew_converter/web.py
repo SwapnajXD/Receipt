@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from decimal import Decimal
 from html import escape
 from io import BytesIO
 from pathlib import Path
@@ -185,6 +186,21 @@ SUBCATEGORY_CHOICES = [
   "Clothing",
 ]
 
+# Mirrors the colors assigned in rules.py so the preview table can show a
+# quick visual swatch next to each category, without importing rules.py's
+# regex machinery just for this.
+CATEGORY_COLORS = {
+  "Income": "#66bb6a",
+  "Groceries": "#26a69a",
+  "Travel": "#005190",
+  "Bills & Fees": "#4caf50",
+  "Dining": "#78909c",
+  "Personal Care": "#bdbdbd",
+  "Gifts": "#f44336",
+  "Shopping": "#e91e63",
+  "Transfers": "#607d8b",
+}
+
 
 def render_category_options(selected: str) -> str:
   return "\n".join(
@@ -226,22 +242,33 @@ PREVIEW_FORM = """<!doctype html>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --ink: #1a1a1a; --paper: #faf9f7; --paper-dark: #f0ede8; --muted: #6b6b6b; --muted-light: #9a9a9a; --border: #e5e2dc; --accent: #c9553d; --accent-dark: #a3432d; --accent-light: #fdf4f2; --success: #2d8659; --error: #c9302c; --shadow-sm: 0 1px 2px rgba(0,0,0,0.04); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --shadow-lg: 0 12px 32px rgba(0,0,0,0.12); --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; }
+    :root {
+      --ink: #1a1a1a; --paper: #faf9f7; --paper-dark: #f0ede8; --muted: #6b6b6b; --muted-light: #9a9a9a;
+      --border: #e5e2dc; --accent: #c9553d; --accent-dark: #a3432d; --accent-light: #fdf4f2;
+      --success: #2d8659; --success-light: #f0fdf4; --error: #c9302c; --error-light: #fef2f2;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04); --shadow-md: 0 4px 12px rgba(0,0,0,0.08); --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
+      --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+    }
     body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; line-height: 1.5; }
     body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: -1; }
-    .preview-page { min-height: 100vh; padding: 32px 24px; animation: fadeIn 0.5s ease-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .preview-page { min-height: 100vh; padding: 32px 24px; animation: fadeIn 0.5s ease-out; }
     .preview-container { max-width: 1400px; margin: 0 auto; }
-    .preview-header { margin-bottom: 28px; }
     .preview-header h1 { font-family: 'Instrument Serif', Georgia, serif; font-size: 2.25rem; font-weight: 400; letter-spacing: -0.01em; }
     .preview-header h1 span { color: var(--accent); font-style: italic; }
     .preview-subtitle { color: var(--muted); margin-top: 4px; }
-    .header-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
-    .header-stats { display: flex; align-items: center; gap: 20px; font-size: 0.9rem; color: var(--muted); }
-    .stat-badge { display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--paper-dark); border-radius: 20px; }
-    .stat-badge svg { width: 16px; height: 16px; }
-    .action-buttons { display: flex; gap: 10px; }
+
+    .header-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin: 20px 0 24px; }
+    .header-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--muted); }
+    .stat-badge { display: flex; align-items: center; gap: 6px; padding: 7px 14px; background: var(--paper-dark); border-radius: 20px; white-space: nowrap; }
+    .stat-badge svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .stat-badge.income { background: var(--success-light); color: var(--success); font-weight: 600; }
+    .stat-badge.expense { background: var(--error-light); color: var(--error); font-weight: 600; }
+    .stat-badge.net { background: var(--accent-light); color: var(--accent-dark); font-weight: 600; }
+
+    .action-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn { padding: 10px 18px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; border: none; }
     .btn svg { width: 16px; height: 16px; }
     .btn-primary { background: var(--accent); color: #fff; }
@@ -250,78 +277,78 @@ PREVIEW_FORM = """<!doctype html>
     .btn-secondary:hover { background: var(--border); }
     .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
     .btn-ghost:hover { background: var(--paper-dark); color: var(--ink); }
-    .bulk-panel { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; display: none; align-items: center; flex-wrap: wrap; gap: 12px; box-shadow: var(--shadow-sm); }
-    .bulk-panel.visible { display: flex; animation: fadeIn 0.3s ease-out; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 360px; }
+    .search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--muted-light); pointer-events: none; }
+    #search-input { width: 100%; padding: 10px 12px 10px 36px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.9rem; font-family: inherit; background: #fff; }
+    #search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+    #match-count { font-size: 0.8rem; color: var(--muted-light); white-space: nowrap; }
+
+    .bulk-panel { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
     .bulk-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
     .bulk-select, .bulk-input { padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.9rem; font-family: inherit; background: #fff; min-width: 140px; }
     .bulk-select:focus, .bulk-input:focus { outline: none; border-color: var(--accent); }
-    .bulk-actions { display: flex; gap: 8px; margin-left: auto; }
+    #selected-count { font-size: 0.8rem; color: var(--muted-light); }
+    .bulk-actions { display: flex; gap: 8px; margin-left: auto; flex-wrap: wrap; }
     .bulk-actions .btn { padding: 8px 14px; font-size: 0.85rem; }
+
     .table-wrapper { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); }
-    .table-scroll { max-height: 75vh; overflow-y: auto; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .table-scroll { max-height: 72vh; overflow: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
     thead { position: sticky; top: 0; z-index: 10; }
-    th { background: var(--paper-dark); padding: 14px 12px; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); border-bottom: 2px solid var(--border); white-space: nowrap; }
-    th.selector-col { width: 48px; text-align: center; }
-    td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
-    td.selector-col { text-align: center; }
-    tbody tr { transition: background 0.15s; animation: slideUp 0.4s ease-out backwards; }
+    th { background: var(--paper-dark); padding: 13px 12px; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); border-bottom: 2px solid var(--border); white-space: nowrap; }
+    th.selector-col { width: 44px; min-width: 44px; text-align: center; }
+    td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    td.selector-col { width: 44px; min-width: 44px; text-align: center; }
+    tbody tr { transition: background 0.15s; animation: slideUp 0.3s ease-out backwards; }
     tbody tr:hover { background: var(--accent-light); }
     tbody tr.selected { background: var(--accent-light); }
+    tbody tr.hidden-row { display: none; }
     input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
-    .cell-input, .cell-select { width: 100%; padding: 8px 10px; border: 1px solid transparent; border-radius: 4px; font-size: 0.9rem; font-family: inherit; background: transparent; transition: all 0.2s; }
-    .cell-input:hover, .cell-select:hover { border-color: var(--border); background: #fff; }
-    .cell-input:focus, .cell-select:focus { outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 2px var(--accent-light); }
-    .cell-input.amount { font-family: 'DM Sans', monospace; font-weight: 600; }
-    .cell-input.date { font-family: 'DM Sans', monospace; color: var(--muted); }
-    .cell-select { cursor: pointer; min-width: 120px; }
-    .income-badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-    .income-badge.income { background: #dcfce7; color: #166534; }
-    .income-badge.expense { background: #fee2e2; color: #991b1b; }
+
+    td.date-cell { font-family: monospace; color: var(--muted); }
+    td.amount-cell { font-family: 'Courier New', monospace; font-weight: 600; }
+    td.category-cell, td.subcategory-cell { min-width: 170px; }
+    td.note-cell { min-width: 200px; }
+
+    .cell-control { width: 100%; border: 1px solid transparent; border-radius: 6px; background: transparent; font: inherit; color: inherit; padding: 7px 8px; transition: all 0.15s; }
+    .cell-control:hover { border-color: var(--border); background: #fff; }
+    .cell-control:focus { outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 2px var(--accent-light); }
+    .select-control { cursor: pointer; min-width: 110px; }
+    .input-control { min-width: 150px; }
+
+    .cell-with-dot { display: flex; align-items: center; gap: 8px; }
+    .cat-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+    .selector-col { width: 44px; min-width: 44px; text-align: center; }
+
     .toast { position: fixed; bottom: 24px; right: 24px; padding: 14px 20px; background: var(--ink); color: #fff; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500; box-shadow: var(--shadow-lg); transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 1000; }
     .toast.visible { transform: translateY(0); opacity: 1; }
     .toast.success { background: var(--success); }
     .toast.error { background: var(--error); }
-    @media (max-width: 768px) { .header-row { flex-direction: column; align-items: stretch; } .header-stats { justify-content: center; } .action-buttons { justify-content: center; } .bulk-panel { flex-direction: column; align-items: stretch; } .bulk-actions { margin-left: 0; justify-content: stretch; } .bulk-actions .btn { flex: 1; } .table-scroll { max-height: 60vh; } th, td { padding: 10px 8px; font-size: 0.85rem; } }
-    .container { max-width: 1400px; margin: 0 auto; }
-    .header { margin-bottom: 28px; }
-    h1 { margin: 0 0 8px; font-size: 2.2rem; font-weight: 700; }
-    .subtitle { margin: 0; color: #6b7280; font-size: 1.05rem; }
-    .stats { display: flex; gap: 20px; margin-top: 14px; font-size: 0.95rem; color: #6b7280; }
-    .controls { margin-bottom: 20px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-    button { appearance: none; border: 0; border-radius: 8px; padding: 11px 18px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; font: inherit; font-weight: 600; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
-    button:hover { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(15,118,110,0.3); }
-    button:active { transform: translateY(0); }
-    button.secondary { background: #9ca3af; }
-    button.secondary:hover { box-shadow: 0 8px 16px rgba(156,163,175,0.3); }
-    .divider { width: 1px; height: 20px; background: #d8d3c7; }
-    .table-wrapper { background: white; border-radius: 12px; border: 1px solid #d8d3c7; overflow: auto; max-height: 700px; box-shadow: 0 6px 20px rgba(31,41,55,0.10); }
-    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-    th { background: #f9fafb; font-weight: 700; position: sticky; top: 0; border-bottom: 2px solid #e5e7eb; padding: 14px 12px; text-align: left; }
-    td { padding: 12px; border-bottom: 1px solid #f3f4f6; }
-    tbody tr:hover { background: #fffbf0; }
-    td.date { font-size: 0.9rem; color: #6b7280; font-family: monospace; }
-    td.amount { font-family: 'Courier New', monospace; font-weight: 600; }
-    td.category-cell, td.subcategory-cell { min-width: 180px; }
-    td.note-cell { min-width: 220px; }
-    .cell-control { width: 100%; border: 1px solid #d8d3c7; border-radius: 6px; background: white; font: inherit; color: inherit; padding: 7px 8px; }
-    .cell-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(15,118,110,0.1); }
-    .cell-control.select-control { cursor: pointer; }
-    .cell-control.input-control { min-width: 180px; }
-    .selector-col { width: 44px; min-width: 44px; text-align: center; }
-    .row-select, #select-all { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
-    .bulk-panel { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; padding: 12px; border: 1px solid #d8d3c7; border-radius: 10px; background: #fffef9; }
-    .bulk-panel label { font-size: 0.88rem; color: #6b7280; margin-right: 2px; }
-    .bulk-panel .bulk-control { min-width: 160px; }
-    .bulk-panel .bulk-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-    .bulk-panel button { padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; }
-    .bulk-panel button.ghost { background: #e5e7eb; color: #111827; }
-    .success-banner { background: #ecfdf5; border-left: 4px solid var(--success); padding: 16px; border-radius: 6px; margin-bottom: 20px; color: #065f46; font-size: 0.95rem; display: none; }
+
+    .empty-state { padding: 48px 24px; text-align: center; color: var(--muted); }
+
+    @media (max-width: 768px) {
+      .header-row { flex-direction: column; align-items: stretch; }
+      .header-stats { justify-content: center; }
+      .action-buttons { justify-content: center; }
+      .toolbar { flex-direction: column; align-items: stretch; }
+      .search-wrap { max-width: none; }
+      .bulk-panel { flex-direction: column; align-items: stretch; }
+      .bulk-actions { margin-left: 0; }
+      .bulk-actions .btn { flex: 1; }
+      .table-scroll { max-height: 60vh; }
+      th, td { padding: 9px 8px; font-size: 0.82rem; }
+    }
   </style>
   <script>
     const DATA_COLUMNS = {data_columns};
     const CATEGORY_CHOICES = {category_choices};
     const SUBCATEGORY_CHOICES = {subcategory_choices};
+    const CATEGORY_COLORS = {category_colors};
 
     function collectTableData() {
       const rows = [];
@@ -335,7 +362,9 @@ PREVIEW_FORM = """<!doctype html>
           if (!field) {
             row[header] = '';
           } else if (field.type === 'date' && field.value) {
-            row[header] = field.value + ' 00:00:00.000';
+            // Keep the same stable noon timestamp used server-side (models.format_date)
+            // so imports behave consistently regardless of the importer's timezone.
+            row[header] = field.value + ' 12:00:00.000';
           } else {
             row[header] = field.value;
           }
@@ -345,10 +374,24 @@ PREVIEW_FORM = """<!doctype html>
       return rows;
     }
 
+    function visibleRows() {
+      return Array.from(document.querySelectorAll('tbody tr')).filter(row => !row.classList.contains('hidden-row'));
+    }
+
     function getSelectedRows() {
-      return Array.from(document.querySelectorAll('tbody tr')).filter(row => {
+      return visibleRows().filter(row => {
         const cb = row.querySelector('.row-select');
         return cb && cb.checked;
+      });
+    }
+
+    function updateSelectedCount() {
+      const count = document.querySelectorAll('.row-select:checked').length;
+      const label = document.getElementById('selected-count');
+      if (label) label.textContent = count ? count + ' selected' : 'none selected';
+      document.querySelectorAll('tbody tr').forEach(row => {
+        const cb = row.querySelector('.row-select');
+        row.classList.toggle('selected', !!(cb && cb.checked));
       });
     }
 
@@ -388,10 +431,10 @@ PREVIEW_FORM = """<!doctype html>
     function applyBulkEdit(applyToAll) {
       const field = document.getElementById('bulk-field').value;
       const value = getBulkValue();
-      const rows = applyToAll ? Array.from(document.querySelectorAll('tbody tr')) : getSelectedRows();
+      const rows = applyToAll ? visibleRows() : getSelectedRows();
 
       if (!rows.length) {
-        showBanner('Select at least one row first.', true);
+        showToast('Select at least one row first.', true);
         return;
       }
 
@@ -410,29 +453,30 @@ PREVIEW_FORM = """<!doctype html>
           }
         }
         control.value = value;
+        control.dispatchEvent(new Event('change', { bubbles: true }));
       });
 
-      showBanner('Bulk edit applied to ' + rows.length + ' row(s).', false);
+      showToast('Bulk edit applied to ' + rows.length + ' row(s).', false);
     }
 
-    function selectAllRows(checked) {
-      document.querySelectorAll('.row-select').forEach(cb => {
-        cb.checked = checked;
+    function selectAllVisibleRows(checked) {
+      visibleRows().forEach(row => {
+        const cb = row.querySelector('.row-select');
+        if (cb) cb.checked = checked;
       });
       const master = document.getElementById('select-all');
       if (master) master.checked = checked;
+      updateSelectedCount();
     }
 
-    function showBanner(message, isError) {
-      const banner = document.querySelector('.success-banner');
-      banner.textContent = message;
-      banner.style.display = 'block';
-      banner.style.background = isError ? '#fef2f2' : '#ecfdf5';
-      banner.style.color = isError ? '#991b1b' : '#065f46';
-      banner.style.borderLeftColor = isError ? '#f87171' : '#10b981';
-      setTimeout(() => {
-        banner.style.display = 'none';
-      }, 3000);
+    function showToast(message, isError) {
+      const toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.remove('success', 'error');
+      toast.classList.add(isError ? 'error' : 'success', 'visible');
+      clearTimeout(showToast._timer);
+      showToast._timer = setTimeout(() => toast.classList.remove('visible'), 3000);
     }
 
     async function learnCategoryRules() {
@@ -447,18 +491,15 @@ PREVIEW_FORM = """<!doctype html>
         if (!response.ok) {
           throw new Error(data.error || 'Failed to learn rules.');
         }
-        showBanner(data.message || 'Learned category rules.', false);
+        showToast(data.message || 'Learned category rules.', false);
       } catch (error) {
-        showBanner(String(error.message || error), true);
+        showToast(String(error.message || error), true);
       }
     }
 
-    window.downloadEdited = downloadEdited;
-    window.learnCategoryRules = learnCategoryRules;
-    
     function escapeCSV(field) {
       const str = String(field || '');
-      if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+      if (str.includes(',') || str.includes('"') || str.includes('\\n')) {
         return '"' + str.replace(/"/g, '""') + '"';
       }
       return str;
@@ -466,8 +507,7 @@ PREVIEW_FORM = """<!doctype html>
 
     function downloadEdited() {
       const data = collectTableData();
-      const allHeaders = Array.from(document.querySelectorAll('table th')).map(th => th.textContent);
-      const headers = allHeaders.slice(1); // Skip first column (selector checkbox)
+      const headers = DATA_COLUMNS;
       const csv = [headers.map(h => escapeCSV(h)).join(',')];
       data.forEach(row => {
         csv.push(headers.map(h => escapeCSV(row[h])).join(','));
@@ -480,27 +520,82 @@ PREVIEW_FORM = """<!doctype html>
       link.click();
       URL.revokeObjectURL(url);
 
-      showBanner('CSV downloaded successfully.', false);
+      showToast('CSV downloaded successfully.', false);
+    }
+
+    function formatMoney(amount) {
+      return amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function updateSummaryStats() {
+      let income = 0;
+      let expense = 0;
+      document.querySelectorAll('tbody tr').forEach(row => {
+        const field = row.querySelector('[data-col="amount"]');
+        if (!field) return;
+        const amount = parseFloat(field.value);
+        if (Number.isNaN(amount)) return;
+        if (amount > 0) income += amount; else expense += -amount;
+      });
+      const incomeEl = document.getElementById('stat-income');
+      const expenseEl = document.getElementById('stat-expense');
+      const netEl = document.getElementById('stat-net');
+      if (incomeEl) incomeEl.textContent = '+' + formatMoney(income);
+      if (expenseEl) expenseEl.textContent = '-' + formatMoney(expense);
+      if (netEl) netEl.textContent = (income - expense >= 0 ? '+' : '-') + formatMoney(Math.abs(income - expense));
+    }
+
+    function filterRows() {
+      const query = document.getElementById('search-input').value.trim().toLowerCase();
+      const rows = Array.from(document.querySelectorAll('tbody tr'));
+      let visible = 0;
+      rows.forEach(row => {
+        const haystack = row.textContent.toLowerCase();
+        const matches = !query || haystack.includes(query);
+        row.classList.toggle('hidden-row', !matches);
+        if (matches) visible += 1;
+      });
+      const matchCount = document.getElementById('match-count');
+      if (matchCount) matchCount.textContent = query ? visible + ' of ' + rows.length + ' shown' : '';
+    }
+
+    function updateCategoryDot(select) {
+      const cell = select.closest('.cell-with-dot');
+      if (!cell) return;
+      const dot = cell.querySelector('.cat-dot');
+      if (dot) dot.style.background = CATEGORY_COLORS[select.value] || '#c9553d';
     }
 
     window.addEventListener('load', () => {
       updateBulkValueControl();
+      updateSelectedCount();
+      updateSummaryStats();
+
       const master = document.getElementById('select-all');
       if (master) {
-        master.addEventListener('change', (event) => {
-          selectAllRows(event.target.checked);
-        });
+        master.addEventListener('change', (event) => selectAllVisibleRows(event.target.checked));
       }
 
-      const downloadButton = document.getElementById('download-btn');
-      if (downloadButton) {
-        downloadButton.addEventListener('click', downloadEdited);
-      }
+      document.getElementById('bulk-field').addEventListener('change', updateBulkValueControl);
+      document.getElementById('apply-selected-btn').addEventListener('click', () => applyBulkEdit(false));
+      document.getElementById('apply-all-btn').addEventListener('click', () => applyBulkEdit(true));
+      document.getElementById('clear-selection-btn').addEventListener('click', () => selectAllVisibleRows(false));
+      document.getElementById('download-btn').addEventListener('click', downloadEdited);
+      document.getElementById('learn-btn').addEventListener('click', learnCategoryRules);
+      document.getElementById('search-input').addEventListener('input', filterRows);
 
-      const learnButton = document.getElementById('learn-btn');
-      if (learnButton) {
-        learnButton.addEventListener('click', learnCategoryRules);
-      }
+      const table = document.querySelector('table');
+      table.addEventListener('change', (event) => {
+        if (event.target.classList.contains('row-select')) {
+          updateSelectedCount();
+        }
+        if (event.target.matches('[data-col="amount"]')) {
+          updateSummaryStats();
+        }
+        if (event.target.classList.contains('cat-select')) {
+          updateCategoryDot(event.target);
+        }
+      });
     });
   </script>
 </head>
@@ -518,22 +613,33 @@ PREVIEW_FORM = """<!doctype html>
             <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
             <span>{row_count} transactions</span>
           </div>
+          <div class="stat-badge income">{currency} <span id="stat-income">+{total_income}</span></div>
+          <div class="stat-badge expense">{currency} <span id="stat-expense">-{total_expense}</span></div>
+          <div class="stat-badge net">Net <span id="stat-net">{net_total}</span></div>
         </div>
 
         <div class="action-buttons">
-          <button class="btn btn-primary" id="download-btn">
+          <button class="btn btn-primary" id="download-btn" type="button">
             <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
             Download CSV
           </button>
-          <button class="btn btn-secondary" id="learn-btn">
+          <button class="btn btn-secondary" id="learn-btn" type="button">
             <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
             Learn Rules
           </button>
-          <button class="btn btn-ghost" onclick="location.href='/'">+ New</button>
+          <button class="btn btn-ghost" type="button" onclick="location.href='/'">+ New</button>
         </div>
       </div>
 
-      <div class="bulk-panel" id="bulk-panel">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+          <input type="text" id="search-input" placeholder="Search notes, categories, amounts...">
+        </div>
+        <span id="match-count"></span>
+      </div>
+
+      <div class="bulk-panel">
         <span class="bulk-label">Bulk edit:</span>
         <select class="bulk-select" id="bulk-field">
           <option value="category name">Category</option>
@@ -541,11 +647,13 @@ PREVIEW_FORM = """<!doctype html>
           <option value="income">Income/Expense</option>
           <option value="note">Note</option>
         </select>
-        <input type="text" class="bulk-input" id="bulk-value" placeholder="Enter value...">
+        <input type="text" class="bulk-input" id="bulk-value-input" placeholder="Enter value...">
+        <select class="bulk-select" id="bulk-value-select" style="display:none;"></select>
+        <span id="selected-count">none selected</span>
         <div class="bulk-actions">
-          <button class="btn btn-secondary" onclick="applyBulkEdit(false)">Apply Selected</button>
-          <button class="btn btn-secondary" onclick="applyBulkEdit(true)">Apply All</button>
-          <button class="btn btn-ghost" onclick="selectAllRows(false)">Clear</button>
+          <button class="btn btn-secondary" id="apply-selected-btn" type="button">Apply to Selected</button>
+          <button class="btn btn-secondary" id="apply-all-btn" type="button">Apply to All Visible</button>
+          <button class="btn btn-ghost" id="clear-selection-btn" type="button">Clear Selection</button>
         </div>
       </div>
 
@@ -631,6 +739,11 @@ def render_preview_page(rows: list[CashewRow]) -> bytes:
   """Render an editable preview table of the converted transactions."""
   headers = '<th class="selector-col"><input id="select-all" type="checkbox" title="Select all rows"></th> '
   headers += " ".join(f"<th>{escape(col)}</th>" for col in CASHEW_COLUMNS)
+
+  total_income = sum((row.amount for row in rows if row.amount > 0), start=Decimal("0"))
+  total_expense = sum((-row.amount for row in rows if row.amount < 0), start=Decimal("0"))
+  net_total = total_income - total_expense
+  currency = rows[0].currency if rows else "INR"
   subcategory_choices = sorted(
     {
       *SUBCATEGORY_CHOICES,
@@ -652,11 +765,15 @@ def render_preview_page(rows: list[CashewRow]) -> bytes:
     for col in CASHEW_COLUMNS:
       value = display_cell_value(csv_row.get(col, ""))
       if col == "category name":
+        dot_color = escape(CATEGORY_COLORS.get(value, "#c9553d"))
         cell_html.append(
           '<td class="category-cell">'
-          f'<select class="cell-control select-control" name="{escape(col)}" data-col="{escape(col)}">'
+          '<span class="cell-with-dot">'
+          f'<span class="cat-dot" style="background:{dot_color}"></span>'
+          f'<select class="cell-control select-control cat-select" name="{escape(col)}" data-col="{escape(col)}">'
           f"{render_category_options(value)}"
           "</select>"
+          "</span>"
           "</td>"
         )
       elif col == "subcategory name":
@@ -675,7 +792,7 @@ def render_preview_page(rows: list[CashewRow]) -> bytes:
         )
       elif col == "date":
         cell_html.append(
-          "<td>"
+          '<td class="date-cell">'
           f'<input class="cell-control input-control" type="date" name="{escape(col)}" data-col="{escape(col)}" value="{escape(display_date_value(csv_row.get(col, "")))}">'
           "</td>"
         )
@@ -690,8 +807,9 @@ def render_preview_page(rows: list[CashewRow]) -> bytes:
       else:
         input_type = "number" if col == "amount" else "text"
         extra_attrs = ' step="any"' if col == "amount" else ""
+        cell_class = ' class="amount-cell"' if col == "amount" else ""
         cell_html.append(
-          "<td>"
+          f"<td{cell_class}>"
           f'<input class="cell-control input-control" type="{input_type}" name="{escape(col)}" data-col="{escape(col)}" value="{escape(value)}"{extra_attrs}>'
           "</td>"
         )
@@ -702,9 +820,14 @@ def render_preview_page(rows: list[CashewRow]) -> bytes:
   preview = PREVIEW_FORM.replace("{row_count}", str(len(rows)))
   preview = preview.replace("{table_headers}", headers)
   preview = preview.replace("{table_rows}", table_rows_html)
+  preview = preview.replace("{total_income}", escape(f"{total_income:,.2f}"))
+  preview = preview.replace("{total_expense}", escape(f"{total_expense:,.2f}"))
+  preview = preview.replace("{net_total}", escape(f"{net_total:,.2f}"))
+  preview = preview.replace("{currency}", escape(currency))
   preview = preview.replace("{data_columns}", json.dumps(CASHEW_COLUMNS))
   preview = preview.replace("{category_choices}", json.dumps(CATEGORY_CHOICES))
   preview = preview.replace("{subcategory_choices}", json.dumps(subcategory_choices))
+  preview = preview.replace("{category_colors}", json.dumps(CATEGORY_COLORS))
   return preview.encode("utf-8")
 
 
@@ -741,7 +864,8 @@ def convert_uploaded_statement(environ) -> list[CashewRow]:
     if suffix not in {".xlsx", ".xlsm", ".xltx", ".xltm", ".csv"}:
         raise ValueError("Unsupported file type. Use .xlsx or .csv.")
 
-    account = fields.get("account", ["Sbi"])[0][0] if "account" in fields else "Sbi"
+    account_field = fields.get("account")
+    account = account_field[0][0].strip() or "Sbi" if account_field else "Sbi"
 
     with NamedTemporaryFile(suffix=suffix, delete=True) as temp_file:
         temp_file.write(file_data)
