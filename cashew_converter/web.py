@@ -936,3 +936,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Serving Cashew Converter on http://{host}:{port}")
         server.serve_forever()
     return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
