@@ -1,4 +1,4 @@
-(# Cashew Converter — Architecture Diagram)
+# Cashew Converter — Architecture Diagram
 
 ## Overview
 
